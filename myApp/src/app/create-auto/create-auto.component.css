@@ -1,0 +1,71 @@
+.create-form {
+  margin-top: -80px;
+  border: 1px solid #ccc;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+textarea {
+  width: 32%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: list-item;
+  border: 1px;
+  background: #f1f1f1;
+}
+
+select {
+  width: 34%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: list-item;
+  border: 1px;
+  background: #f1f1f1;
+}
+
+button {
+  background-color: #04aa6d;
+  color: white;
+  display: list-item;
+  width: 34.2%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.img {
+  width: 120px;
+  height: 15px;
+  margin: 3.1%;
+  background-repeat: no-repeat;
+  background-size:auto;
+  backdrop-filter: blur(3px);
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  width: 21%;
+}
+
+h1{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 30px;
+  font-style: italic;
+  color: antiquewhite;
+  text-align: center;
+background-color: #04AA6D;
+  text-shadow: 0 0 3px #00ffa2, 0 0 5px #3c3cdd;
+}
+p{
+  text-align:center;
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 25px;
+}

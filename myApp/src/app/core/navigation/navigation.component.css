@@ -1,13 +1,9 @@
 header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em;
+    padding: 0;
     background-color: hsl(180, 27%, 48%);
 }
 
 header a {
-    padding: 0 10px;
     text-decoration: none;
     color: black;
 }
@@ -17,8 +13,6 @@ header a :hover {
 }
 nav{
     background-color: hsl(180, 27%, 48%);
-    height: 0px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     color: black;
@@ -26,5 +20,14 @@ nav{
 nav a{
     font-size: 1.5rem;
     color: black;
-    font-weight: 400;
+    font-weight: 300;
+    text-decoration: none;
+}
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+nav li {
+    list-style: none;
 }

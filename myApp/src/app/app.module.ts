@@ -8,7 +8,6 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { CreateAutoComponent } from './create-auto/create-auto.component';
 import { AutosModule } from './autos/autos.module';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     CoreModule,
     SharedModule,
     AutosModule,
-    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

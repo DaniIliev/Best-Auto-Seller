@@ -39,6 +39,9 @@
           <p class="error" *ngIf="form.get('email')?.errors?.['required']">
             Email is required!
           </p>
+          <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
+            Email is not valid!
+          </p>
         </ng-container>
 
         <!-- Password -->

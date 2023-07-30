@@ -6,15 +6,19 @@
             <li><a routerLink="/catalog">Catalog</a></li>
             <li><a routerLink="/search">Search</a></li>
             <li><a routerLink="/add-auto">Add-Car</a></li>
-            <li><a routerLink="/user/profile">Profile</a></li>
-      <!-- <a (click)="logout()"">Logout</a> -->
+
+              
       
     </ul>
     </div>
     <div>
-        <ul>
+        <ul *ngIf="!isLoggedIn">
             <li> <a routerLink="/user/register">Register</a></li>
             <li> <a routerLink="/user/login">Login</a></li>
+        </ul>
+        <ul *ngIf="isLoggedIn">
+          <li><a routerLink="/user/profile">Profile</a></li>
+          <li> <a (click)="logout()">Logout</a></li>
         </ul>
     </div>
   </nav>

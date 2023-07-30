@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { CreateAutoComponent } from './create-auto/create-auto.component';
 import { AutosModule } from './autos/autos.module';
+import { AppInterceptorProovider } from './app.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,12 @@ import { AutosModule } from './autos/autos.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     CoreModule,
     SharedModule,
     AutosModule,
   ],
-  providers: [],
+  providers: [AppInterceptorProovider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

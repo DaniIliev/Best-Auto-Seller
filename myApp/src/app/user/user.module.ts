@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 
 
 
+
 @NgModule({
   declarations: [
     RegisterComponent,
@@ -20,7 +21,7 @@ import { SharedModule } from '../shared/shared.module';
     UserRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class UserModule { }

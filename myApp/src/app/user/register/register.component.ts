@@ -4,6 +4,7 @@ import { EMAIL_DOMAINS } from 'src/app/shared/emailDomains';
 import { appEmailValidator } from 'src/app/shared/validators/app-email-validator';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { envirenment } from 'src/app/environment/environment';
 
 @Component({
   selector: 'app-register',
@@ -28,10 +29,23 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
+    
     const { username, email, password, rePassword } = this.form.value;
 
-    console.log('Register....');
+    if(password !== rePassword){
+      return alert('Password`s dont match!')
+    }
+
+    this.userService.register(username!, email!, password!, rePassword!).subscribe({
+      next: (responce) => {
+        localStorage.setItem(envirenment.user, JSON.stringify(responce))
+        this.router.navigate(['/'])
+      },
+      error: (error) => {
+        return alert(error)
+      }
+    }
+    )
   }
   ngOnInit(): void {
     console.log(EMAIL_DOMAINS);

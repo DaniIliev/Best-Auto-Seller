@@ -59,7 +59,12 @@ span.psw {
   float: right;
   padding-top: 16px;
 }
-
+.error {
+  color: red;
+  font-size: 15px;
+  font-style: italic;
+  text-shadow: none;
+}
 
 
 /* Change styles for span and cancel button on extra small screens */

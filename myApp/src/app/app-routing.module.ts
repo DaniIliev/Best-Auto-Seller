@@ -1,7 +1,7 @@
 import { NgModule, createComponent } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CreateAutoComponent } from './create-auto/create-auto.component';
+import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
 
 const routes: Routes = [
   {

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { CreateAutoComponent } from './create-auto/create-auto.component';
+import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
 import { AutosModule } from './autos/autos.module';
 import { AppInterceptorProovider } from './app.interceptor';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,7 +15,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     HomeComponent,
-    CreateAutoComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    AutosModule,
+    AutosModule
   ],
   providers: [AppInterceptorProovider],
   bootstrap: [AppComponent]

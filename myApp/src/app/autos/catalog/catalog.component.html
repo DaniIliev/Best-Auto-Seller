@@ -1,72 +1,29 @@
-<main class="catalog">
+<div *ngIf="isLoading">
+    <app-loader/>
+</div>
+
+<main class="catalog" *ngIf="!isLoading">
     <section id="catalog">
         <h2>Cars for sale</h2>
         <ul class="card-wrapper">
-            <!-- Display a li with information about every post (if any)-->
-            <li class="card">
-                <img src="https://7cars.bg/wp-content/uploads/2022/03/0-02-0a-7abb8dbdf53a3f2253d91fda08b83b23506ca42f319fce029837094225ef75d7_bd7e189c56bb277f-876x535.jpg"/>
-                <p>
-                    <strong>Brand: </strong><span class="name">Mercedes</span>
-                </p>
-                <p>
-                    <strong>Model: </strong><span class="model">CLE 320</span>
-                </p>
-                <p><strong>Car type:</strong><span class="car-type">Coupe</span></p>
-                <a class="details-btn" href="#">Details</a>
-            </li>
 
-            <li class="card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/2005-2008_BMW_320i_%28E90%29_sedan_%282011-07-17%29_01.jpg"/>
+            <li class="card" *ngFor="let auto of autos">
+                <img src="{{auto.imageUrl}}"/>
                 <p>
-                    <strong>Brand: </strong><span class="brand">BMW</span>
+                    <strong>Brand: </strong><span class="name">{{auto.brand}}</span>
                 </p>
                 <p>
-                    <strong>Model: </strong><span class="model">320D</span>
+                    <strong>Model: </strong><span class="model">{{auto.model}}</span>
                 </p>
-                <p><strong>Car type:</strong><span class="car-type">Sedan</span></p>
-                <a class="details-btn" href="#">Details</a>
-            </li>
-
-            <li class="card">
-                <img src="https://7cars.bg/wp-content/uploads/2022/03/0-02-0a-7abb8dbdf53a3f2253d91fda08b83b23506ca42f319fce029837094225ef75d7_bd7e189c56bb277f-876x535.jpg"/>
-                <p>
-                    <strong>Brand: </strong><span class="name">Mercedes</span>
-                </p>
-                <p>
-                    <strong>Model: </strong><span class="model">CLE 320</span>
-                </p>
-                <p><strong>Car type:</strong><span class="car-type">Coupe</span></p>
-                <a class="details-btn" href="#">Details</a>
-            </li>
-
-            <li class="card">
-                <img src="https://media.pazar3.mk/Image/069c6ecd-ba0d-4859-b29b-cb935bf4a2dc/20230328/false/false/1280/960/bmw-320-d-x-drive-m-performance-uvoz-od-svajcaria.jpeg?noLogo=true"/>
-                <p>
-                    <strong>Brand: </strong><span class="brand">BMW</span>
-                </p>
-                <p>
-                    <strong>Model: </strong><span class="model">335D</span>
-                </p>
-                <p><strong>Car type:</strong><span class="car-type">Sedan</span></p>
-                <a class="details-btn" href="#">Details</a>
-            </li>
-            
-            <li class="card">
-                <img src="https://7cars.bg/wp-content/uploads/2022/03/0-02-0a-7abb8dbdf53a3f2253d91fda08b83b23506ca42f319fce029837094225ef75d7_bd7e189c56bb277f-876x535.jpg"/>
-                <p>
-                    <strong>Brand: </strong><span class="name">Mercedes</span>
-                </p>
-                <p>
-                    <strong>Model: </strong><span class="model">CLE 320</span>
-                </p>
-                <p><strong>Car type:</strong><span class="car-type">Coupe</span></p>
-                <a class="details-btn" href="#">Details</a>
+                <p><strong>Car type:</strong><span class="car-type">{{auto.type}}</span></p>
+                <a class="details-btn" [routerLink]="auto.id">Details</a>
             </li>
         </ul>
 
+
         <!-- Display an h2 if there are no posts -->
-        <!-- <div id="no-post">
-            <h2>There are no animals in need now! </h2>
-        </div> -->
+        <div id="no-post" *ngIf="autos.length===0">
+            <h1>There are no cars available! :( :( :(</h1>
+        </div>
     </section>
 </main>

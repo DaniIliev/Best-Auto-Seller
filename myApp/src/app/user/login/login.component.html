@@ -2,27 +2,55 @@
   <section id="login">
     <div class="form">
       <h2>Login page</h2>
-      <form class="login-form">
+      <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
         <h1>To log in to your account, you must complete the login form</h1>
         <!-- Email -->
         <label for="email"></label>
         <input
           type="text"
           name="email"
-          name="email"
+          ngModel
+          #inputEmail="ngModel"
           id="email"
           placeholder="Email..."
+          required
+          [appEmail]="appEmailDomains"
         />
+
+        <ng-container *ngIf="inputEmail.touched">
+          <p class="error" *ngIf="inputEmail.errors?.['required']">
+            Email is required!
+          </p>
+
+          <p class="error" *ngIf="inputEmail.errors?.['appEmailValidator']">
+            Email is not valid!
+          </p>
+        </ng-container>
+
         <label for="password"></label>
         <input
           type="password"
           name="password"
-          name="password"
+          ngModel
+          #inputPassword="ngModel"
           id="password"
           placeholder="Password..."
+          required
+          minlength="6"
         />
+        <ng-container *ngIf="inputPassword.touched">
+          <p class="error" *ngIf="inputPassword.errors?.['required']">
+            Password is required!
+          </p>
 
-        <button>Login</button>
+          <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+            Password muss be at less
+            {{inputPassword.errors?.['minlength']['requiredLength']}}
+            characters!
+          </p>
+        </ng-container>
+
+        <button [disabled]="form.invalid">Login</button>
         <h3 class="message">
           Don't have a acount? <a href="/user/register">Login</a>
         </h3>

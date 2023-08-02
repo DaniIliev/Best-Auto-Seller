@@ -17,17 +17,6 @@ h2 {
 }
 
 .card {
-  /* display: flex;
-  flex-wrap: wrap; */
-  /* justify-content: center; */
-  /* max-width: 23%;
-  height: 500px;
-  margin: 25px auto;
-  color: black;
-  background-color: rgba(255, 255, 255, 0.333);
-  border-radius: 5px;
-  border: 2px solid rgba(169, 152, 198, 0.781);
-  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.682), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */ 
   border: 1px solid #fff;
   height: 500px;
   margin: 25px auto;
@@ -59,7 +48,8 @@ h2 {
   width: 130px;
   padding: 10px;
   color: white;
-  background-image: linear-gradient(45deg, #04aa6d, #e8b77e);
+  background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+
 }
 
 .card p {
@@ -76,6 +66,7 @@ h2 {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
+  overflow: scroll;
 }
 
 ul {

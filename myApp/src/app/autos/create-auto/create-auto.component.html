@@ -35,21 +35,21 @@
           <p class="error" *ngIf="inputImage.errors?.['required']">Image is required!</p>
         </ng-container>
 
-        <select id="type" name="type">
+        <select id="type" name="type" ngModel #inputType="ngModel">
           <option value="0">Type: -----</option>
-          <option value="1">1 - Coupe</option>
-          <option value="2">2 - Sedan</option>
-          <option value="3">3 - Limosine</option>
-          <option value="4">4 - Combi</option>
-          <option value="5">5 - Suv</option>
-          <option value="6">6 - Jeep</option>
+          <option value="Coupe">1 - Coupe</option>
+          <option value="Sedan">2 - Sedan</option>
+          <option value="Limosine">3 - Limosine</option>
+          <option value="Combi">4 - Combi</option>
+          <option value="Suv">5 - Suv</option>
+          <option value="Jeep">6 - Jeep</option>
         </select>
-        <select id="motor" name="motor">
+        <select id="motor" name="motor" ngModel #inputMotor="ngModel">
           <option value="0">Motor -----</option>
-          <option value="1">1 - Benzin</option>
-          <option value="2">2 - Diesel</option>
-          <option value="3">3 - Hybrid</option>
-          <option value="4">4 - Electric</option>
+          <option value="Benzin">1 - Benzin</option>
+          <option value="Diesel">2 - Diesel</option>
+          <option value="Hybrid">3 - Hybrid</option>
+          <option value="Electric">4 - Electric</option>
         </select>
         <textarea
           id="description"

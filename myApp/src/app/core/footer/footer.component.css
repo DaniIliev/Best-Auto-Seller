@@ -1,5 +1,6 @@
 footer {
-    background:  hsl(180, 27%, 48%);
+    background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+    color: white;
     margin-top: 10em;
     position: absolute;
     display: block;

@@ -33,6 +33,7 @@ export class CreateAutoComponent implements OnInit {
       description,
     } = form.value;
 
+console.log(type,motor);
 
 
     this.apiService.postAuto(

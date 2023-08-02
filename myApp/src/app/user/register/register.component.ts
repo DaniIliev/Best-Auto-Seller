@@ -13,7 +13,6 @@ import { envirenment } from 'src/app/environment/environment';
 })
 export class RegisterComponent implements OnInit {
   form = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, appEmailValidator(EMAIL_DOMAINS)]],
 
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -30,13 +29,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
     
-    const { username, email, password, rePassword } = this.form.value;
+    const { email, password, rePassword } = this.form.value;
 
     if(password !== rePassword){
       return alert('Password`s dont match!')
     }
 
-    this.userService.register(username!, email!, password!, rePassword!).subscribe({
+    this.userService.register(email!, password!, rePassword!).subscribe({
       next: (responce) => {
         localStorage.setItem(envirenment.user, JSON.stringify(responce))
         this.router.navigate(['/'])

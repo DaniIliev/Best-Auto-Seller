@@ -12,28 +12,43 @@ h2 {
   margin-top: -50px;
   text-align: center;
   font-size: 40px;
-  background-color: #04aa6d;
+
   text-shadow: 0 0 3px #00ffa2, 0 0 5px #3c3cdd;
 }
 
 .card {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
   /* justify-content: center; */
-  max-width: 23%;
+  /* max-width: 23%;
   height: 500px;
   margin: 25px auto;
   color: black;
   background-color: rgba(255, 255, 255, 0.333);
   border-radius: 5px;
   border: 2px solid rgba(169, 152, 198, 0.781);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.682), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */ 
+  border: 1px solid #fff;
+  height: 500px;
+  margin: 25px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 3em;
+  border-radius: 12px;
+  backdrop-filter: blur(18px);
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.682), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  max-width: 1100px;
 }
 
 .card img {
-  margin: auto;
-  height: 290px;
-  width: 290px;
+    overflow: hidden;
+    display: block;
+    width: 20em;
+    min-height: 15em;
+
+
 }
 
 .details-btn {
@@ -54,6 +69,7 @@ h2 {
   max-height: 50px;
   max-width: 30%;
   text-align: left;
+  color:white
 }
 
 .card-wrapper {
@@ -69,9 +85,7 @@ ul {
   padding-bottom: 10px;
 }
 
-main {
-  background-color: beige;
-}
+
 
 h1 {
   background-color: #62ff0035;
@@ -79,4 +93,6 @@ h1 {
   text-align: center;
   padding: 10px;
   font-style: italic;
+  
 }
+

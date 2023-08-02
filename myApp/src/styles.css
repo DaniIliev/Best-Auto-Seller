@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-html{
-    background-color: beige;
-}
 
+
+body{
+    background-image: url('./assets/car.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+}

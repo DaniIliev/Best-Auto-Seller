@@ -1,57 +1,32 @@
-<main>
-  <h2>Login Form</h2>
-  <form  class="login" #form="ngForm" (ngSubmit)="login(form)">
-    <div class="img">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-        alt="Avatar"
-        class="avatar"
-      />
+<main class="login">
+  <section id="login">
+    <div class="form">
+      <h2>Login page</h2>
+      <form class="login-form">
+        <h1>To log in to your account, you must complete the login form</h1>
+        <!-- Email -->
+        <label for="email"></label>
+        <input
+          type="text"
+          name="email"
+          name="email"
+          id="email"
+          placeholder="Email..."
+        />
+        <label for="password"></label>
+        <input
+          type="password"
+          name="password"
+          name="password"
+          id="password"
+          placeholder="Password..."
+        />
+
+        <button>Login</button>
+        <h3 class="message">
+          Don't have a acount? <a href="/user/register">Login</a>
+        </h3>
+      </form>
     </div>
-    <!-- Email -->
-    <div class="container">
-      <label for="email"><b>Email</b></label>
-      <input
-        type="text"
-        placeholder="Enter Email"
-        name="email"
-        ngModel
-        #inputEmail="ngModel"
-        required
-        [appEmail]="appEmailDomains"
-      />
-
-      <ng-container *ngIf="inputEmail.touched">
-        <p class="error" *ngIf="inputEmail.errors?.['required']">
-          Email is required!
-        </p>
-
-        <p class="error" *ngIf="inputEmail.errors?.['appEmailValidator']">
-          Email is not valid!
-        </p>
-      </ng-container>
-
-      <!-- Password -->
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" ngModel #inputPassword="ngModel" required minlength="6"/>
-
-      <ng-container *ngIf="inputPassword.touched">
-        <p class="error" *ngIf="inputPassword.errors?.['required']">
-          Password is required!
-        </p>
-
-        <p class="error" *ngIf="inputPassword.errors?.['minlength']">
-          Password muss be at less {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
-        </p>
-      </ng-container>
-      <button type="submit" [disabled]="form.invalid">Login</button>
-    </div>
-
-    <div class="container" style="background-color: #f1f1f1">
-      <button type="button" class="cancelbtn" routerLink="/">Cancel</button>
-      <span class="psw"
-        ><a routerLink="/user/register">Don't have accout</a></span
-      >
-    </div>
-  </form>
+  </section>
 </main>

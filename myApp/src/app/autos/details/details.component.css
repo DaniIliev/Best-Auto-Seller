@@ -1,28 +1,112 @@
-.form{
-    display: flex;
-    justify-content: center;
-    background-color: gray;
-    margin: 5px auto;
-    min-height: 350px;
-    max-width: 50%;
-    padding: 30px;
+.all{
+  display: flex;
+}
+.details{
+  margin-left: 2em;
+  width: 15em;
+  border: 1px solid white;
+  background-image:linear-gradient(rgba(216, 135, 14, 0.5), rgba(243, 16, 73, 0.763));
+  border-radius: 1em;
+  height: 7em;
+  /* text-align: center; */
+  font-size: 1.5em;
+  font-style: italic;
+  overflow: scroll;
+
 }
 
-input[type="text"],
-input[type="password"],
-input[type="date"],
-textarea {
-  width: 70%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: 1px;
-  background: #f1f1f1;
+.details div{
+  padding-left: 1em;
+  padding-top: 0.2em;
 }
-select {
-    width: 34%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    display: list-item;
-    border: 1px;
-    background: #f1f1f1;
-  }
+
+.owner-btn{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.btns{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+button {
+  text-decoration: none;
+  margin: 0 auto;
+  font-size: 25px;
+  text-align: center;
+  width: 130px;
+  padding: 10px;
+  color: white;
+  background-image: linear-gradient(45deg, #04aa6d, #e8b77e);
+}
+img{
+  width: 20em;
+  height: 15em;
+  margin-left: 3em
+}
+.description{
+  margin-left: 2em;
+  width: 15em;
+  border: 1px solid white;
+  background-image:linear-gradient(rgba(216, 135, 14, 0.5), rgba(243, 16, 73, 0.763));
+  border-radius: 1em;
+  height: 7em;
+  /* text-align: center; */
+  font-size: 1.5em;
+  font-style: italic;
+  overflow: scroll;
+}
+
+.description p{
+  padding-left: 1em;
+  margin: 0;
+  padding-top: 0.2em;
+}
+
+.comment-answer{
+  display: flex;
+  margin: 0 auto;
+  /* justify-content: space-between; */
+}
+
+.answer-comment{
+
+  margin-left: 3em;
+
+}
+
+.commentars{
+  margin-top: 3em;
+  margin-left: 2em;
+  width: 25em;
+  border: 1px solid white;
+  background-image:linear-gradient(rgba(216, 135, 14, 0.5), rgba(243, 16, 73, 0.763));
+  border-radius: 1em;
+  height: 10em;
+  /* text-align: center; */
+  font-size: 1.5em;
+  font-style: italic;
+  overflow:scroll;
+}
+p{
+  padding: 0;
+  padding-left: 1em;
+  padding-top: 0.5em;
+  margin: 0;
+}
+
+.answer-comment h1, .answer-comment p {
+color: white;
+}
+
+h1{
+  text-align: center;
+  font-style: italic;
+
+  
+}

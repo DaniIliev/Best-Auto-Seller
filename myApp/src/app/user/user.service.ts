@@ -13,6 +13,9 @@ export class UserService {
 
   user: User | undefined;
 
+  regExp = /(@gmail.(com|bg)$)/
+  username: string | undefined
+  
   subscription: Subscription | undefined;
 
   get isLogged(): boolean {
@@ -22,18 +25,17 @@ export class UserService {
   constructor(private http: HttpClient) {
     this.subscription = this.user$.subscribe((user) => {
       this.user = user;
+      this.username = this.user?.email.replace(this.regExp, '')
     });
   }
 
   register(
-    username: string,
     email: string,
     password: string,
     rePassword: string
   ) {
     return this.http
       .post<User>(`/api:signUp?key=${envirenment.webApiKey}`, {
-        username,
         email,
         password,
         rePassword,

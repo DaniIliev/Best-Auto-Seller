@@ -10,11 +10,14 @@ import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
 import { AutosModule } from './autos/autos.module';
 import { AppInterceptorProovider } from './app.interceptor';
 import { HttpClientModule } from '@angular/common/http';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     CoreModule,
     SharedModule,
-    AutosModule
+    AutosModule,
+    FormsModule,
   ],
   providers: [AppInterceptorProovider],
   bootstrap: [AppComponent]

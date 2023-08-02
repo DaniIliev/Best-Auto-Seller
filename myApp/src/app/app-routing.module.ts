@@ -2,6 +2,7 @@ import { NgModule, createComponent } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'add-auto',
     component: CreateAutoComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   },
   {
     //leazy-loading

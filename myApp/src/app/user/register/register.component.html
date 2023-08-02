@@ -11,22 +11,7 @@
         <h1>Register Form</h1>
         <p>Please fill in this form to create an account.</p>
         <hr />
-        <!-- Username -->
-        <input
-          type="text"
-          formControlName="username"
-          name="username"
-          id="username"
-          placeholder="Username..."
-        />
-        <ng-container *ngIf="form.get('username')?.touched">
-          <p class="error" *ngIf="form.get('username')?.errors?.['required']">
-            Username is required!
-          </p>
-          <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
-            Username's length should not be less than 3!
-          </p>
-        </ng-container>
+
         <!-- Email -->
         <input
           type="text"

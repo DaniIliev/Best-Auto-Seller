@@ -1,65 +1,65 @@
-<main class="edit">
-    <section>
-      <h1>Edit Car </h1>
-      <hr/>
-      <div class="form">
-        <form class="edit-form" #form="ngForm" (ngSubmit)="edit(form)">
-          <input type="text" name="brand" id="brand" placeholder="Brand" ngModel #inputBrand="ngModel" required/>
-          <ng-container *ngIf="inputBrand.touched">
-            <p class="error" *ngIf="inputBrand.errors?.['required']">Brand is required!</p>
-          </ng-container>
-          <input type="text" name="model" id="model" placeholder="Model" ngModel #inputModel="ngModel" required/>
-          <ng-container *ngIf="inputModel.touched">
-            <p class="error" *ngIf="inputModel.errors?.['required']" >Model is required!</p>
-          </ng-container>
-          <input
-            type="date"
-            name="manufactureYear"
-            id="manufactureYear"
-            placeholder="Year of manufacture"
-            ngModel
-            #inputDate="ngModel"
-            required
-          />
-          <ng-container *ngIf="inputDate.touched">
-            <p class="error">Date is required!</p>
-          </ng-container>
-          <input type="text" name="imageUrl" id="imageUrl" placeholder="Auto image" ngModel #inputImage="ngModel" required/>
-          <ng-container *ngIf="inputImage.touched">
-            <p class="error" *ngIf="inputImage.errors?.['required']">Image is required!</p>
-          </ng-container>
-  
-          <select id="type" name="type">
-            <option value="0">Type: -----</option>
-            <option value="1">1 - Coupe</option>
-            <option value="2">2 - Sedan</option>
-            <option value="3">3 - Limosine</option>
-            <option value="4">4 - Combi</option>
-            <option value="5">5 - Suv</option>
-            <option value="6">6 - Jeep</option>
-          </select>
-          <select id="motor" name="motor">
-            <option value="0">Motor -----</option>
-            <option value="1">1 - Benzin</option>
-            <option value="2">2 - Diesel</option>
-            <option value="3">3 - Hybrid</option>
-            <option value="4">4 - Electric</option>
-          </select>
-          <textarea
-            id="description"
-            placeholder="Description..."
-            name="description"
-            ngModel
-            #inputDescription="ngModel"
-            required
-          ></textarea>
-          <ng-container *ngIf="inputDescription.touched">
-            <p class="error" *ngIf="inputDescription.errors?.['required']">Description is required!</p>
-          </ng-container>
-  
-          <button>Edit</button>
-        </form>
+
+<main class="detailsPage">
+  <section>
+    <h1>Details about the Car</h1>
+    <div class="all">
+      <img src="{{ auto?.imageUrl }}" />
+      <div class="details">
+        <div type="text" name="brand" id="brand">
+          <strong>Auto Brand:</strong> {{ auto?.brand }}
+        </div>
+
+        <div type="text" name="model" id="model">
+          <strong>Auto model:</strong> {{ auto?.model }}
+        </div>
+
+        <div type="date" name="manufactureYear" id="manufactureYear">
+          <strong>Year of manufacture:</strong> {{ auto?.manufactureYear }}
+        </div>
+
+        <div id="type" name="type"><strong>Type:</strong>{{ auto?.type }}</div>
+        <div id="motor" name="motor">
+          <strong>Motor:</strong> {{ auto?.motor }}
+        </div>
       </div>
-    </section>
-  </main>
-  
+      <div class="description" id="description" name="description">
+        <p><strong>Description:</strong> {{ auto?.description }}</p>
+      </div>
+
+      <div class="btns">
+        <div *ngIf="owner" class="owner-btn">
+          <button routerLink="/edit">Edit</button>
+          <button (click)="deleteFn()">Delete</button>
+        </div>
+        <button routerLink="/autos">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="commets">
+    <div class="comment-answer">
+      <div class="commentars">
+        <h1>Comments about the car!</h1>
+        <div *ngIf="comments==undefined">
+          No comments available!
+        </div>
+      
+        <div *ngFor="let comment of comments">
+          <p>{{comment.name}}: {{comment.comment}}</p>
+        </div>
+
+      </div>
+      <div class="answer-comment" *ngIf="isLoggedIn">
+        <h1>Whrite a comment!</h1>
+        <p><span>{{username}}</span> comment:</p>
+        <div class="answer">
+          <form  [formGroup]="form" (submit)="postComment()">
+            <textarea formControlName="postText" id="comment" cols="30" rows="10"></textarea>
+            <button>Post</button>
+          </form>
+        </div>
+      </div>
+    </div>
+ 
+  </section>
+</main>

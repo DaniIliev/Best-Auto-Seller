@@ -12,14 +12,14 @@ header a :hover {
     color: brown;
 }
 nav{
-    background-color: hsl(180, 27%, 48%);
+    background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
     display: flex;
     justify-content: space-between;
     color: black;
 }
 nav a{
     font-size: 1.5rem;
-    color: black;
+    color: white;
     font-weight: 300;
     text-decoration: none;
 }
@@ -30,4 +30,8 @@ nav ul {
 }
 nav li {
     list-style: none;
+}
+
+.log{
+    padding-right: 3em;
 }

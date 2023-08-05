@@ -1,11 +1,19 @@
 <main class="home">
 
-  <section id="home">
-    <h1>Welcome to Best-Auto-Seller</h1>
+  <section id="home" *ngIf="username">
+    <h1>Welcome {{username}} to Best-Auto-Seller</h1>
     <h2>
       This site will help you not only to sell your car, but also to find a new, nicer one.
     </h2>
   </section> 
+
+  <section id="home" *ngIf="username == undefined">
+    <h1>Welcome to Best-Auto-Seller</h1>
+    <h2>
+      This site will help you not only to sell your car, but also to find a new, nicer one.
+    </h2>
+  </section>  
+
   <div class="navigate">
     <button class="end-btn1" routerLink="/autos"> Cars for sale here... </button>
     <button class="end-btn2" routerLink="/add-auto">Add car for sale here... </button>

@@ -17,7 +17,9 @@
             <li class="log"> <a routerLink="/user/login">Login</a></li>
         </ul>
         <ul *ngIf="isLoggedIn">
-          <li><a routerLink="/user/profile">Profile</a></li>
+          <!-- <li><a routerLink="/user/profile">Profile</a></li> -->
+          <li><a (click)="goToProfile()">Profile</a></li>
+
           <li class="log"> <a (click)="logout()">Logout</a></li>
         </ul>
     </div>

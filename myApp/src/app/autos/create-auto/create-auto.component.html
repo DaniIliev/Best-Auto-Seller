@@ -1,13 +1,8 @@
 <main class="create">
   <section>
     <h1>Add Car </h1>
-
     <p>Easy way to sell your car! The condition is that you fill in the fields with the car data and it will be sold within days.</p>
-    <div class="img">
-      <img
-        src="https://whipflipnow.s3.amazonaws.com/blog/how+to+sell+a+car+in+ohio.jpg"
-      />
-    </div>
+    <div class="content">
     <div class="form">
       <form class="create-form" #form="ngForm" (ngSubmit)="submit(form)">
         <input type="text" name="brand" id="brand" placeholder="Brand" ngModel #inputBrand="ngModel" required/>
@@ -66,5 +61,11 @@
         <button>Post</button>
       </form>
     </div>
+    <!-- <div class="img">
+      <img
+        src="https://whipflipnow.s3.amazonaws.com/blog/how+to+sell+a+car+in+ohio.jpg"
+      />
+    </div> -->
+  </div>
   </section>
 </main>

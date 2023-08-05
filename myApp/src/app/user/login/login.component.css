@@ -27,6 +27,13 @@ h2 {
     font-size: 3em;
 }
 
+h1{
+    text-align: center;
+    font-style: italic;
+    padding: 3em;
+    margin-top: -7em;
+    margin-bottom: -2em;
+}
 form {
     padding-top: 8em;
 }
@@ -71,4 +78,5 @@ label{
 
 .message{
   color: white;
+  font-style: italic;
 }

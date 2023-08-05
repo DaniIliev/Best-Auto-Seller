@@ -1,4 +1,4 @@
-.img {
+/* .img {
   width: 20px;
   height: 10px;
   margin: 5%;
@@ -59,11 +59,67 @@ p{
 h1{
   font-size: 35px;
   font-style: italic;
-}
+} */
 
 .error {
   color: red;
   font-size: 11px;
   font-style: italic;
   text-shadow: none;
+}
+
+form{
+  padding: 4em;
+}
+
+
+.register-form {
+  border: 1px solid #000;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 40em;
+  border-radius: 2em;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 1em 1em 1em rgba(255, 255, 255, 0.2);
+}
+input {
+  border-radius: 1em;
+  border: 1px solid black;
+  width: 18em;
+  height: 3em;
+}
+
+
+button {
+  margin: 1em;
+  padding: 0.5em 1em;
+  border-radius: 100px;
+  color: #000;
+  border: 2px solid black;
+  font-weight: 580;
+}
+
+button:hover {
+  background-color: blue;
+  border: 2px solid green;
+  color: #fff;
+}
+.message{
+  color: white;
+  font-style: italic;
+}
+
+h2 {
+  text-align: center;
+  font-size: 3em;
+}
+
+h1{
+  text-align: center;
+  font-style: italic;
+  margin-top: -1em;
+  margin-bottom: 2em;
 }

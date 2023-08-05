@@ -3,100 +3,89 @@
     <h1>Edit Car</h1>
     <hr />
     <div class="form">
-      <form class="edit-form" #form="ngForm" (ngSubmit)="edit(form)">
+      <form class="edit-form" [formGroup]="form" (ngSubmit)="edit()">
         <input
           type="text"
-          name="brand"
+          formControlName="brand"
           [value]="auto?.brand"
           id="brand"
           placeholder="Brand"
-          ngModel
-          #inputBrand="ngModel"
-          required
         /> 
-        <ng-container *ngIf="inputBrand.touched">
+        <!-- <ng-container *ngIf="inputBrand.touched">
           <p class="error" *ngIf="inputBrand.errors?.['required']">
             Brand is required!
           </p>
-        </ng-container>
+        </ng-container> -->
         <input
           type="text"
-          name="model"
+          formControlName="model"
           id="model"
           placeholder="Model"
-          ngModel
-          #inputModel="ngModel"
-          required
           value="{{auto?.model}}"
         />
-        <ng-container *ngIf="inputModel.touched">
+        <!-- <ng-container *ngIf="inputModel.touched">
           <p class="error" *ngIf="inputModel.errors?.['required']">
             Model is required!
           </p>
-        </ng-container>
+        </ng-container> -->
         <input
           type="date"
-          name="manufactureYear"
+          formControlName="manufactureYear"
           id="manufactureYear"
           placeholder="Year of manufacture"
-          ngModel
-          #inputDate="ngModel"
-          required
           value="{{auto?.manufactureYear}}"
         />
-        <ng-container *ngIf="inputDate.touched">
-          <p class="error">Date is required!</p>
-        </ng-container>
+        <!-- <ng-container *ngIf="inputDate.touched"> -->
+          <!-- <p class="error">Date is required!</p>
+        </ng-container> -->
         <input
           type="text"
-          name="imageUrl"
+          formControlName="imageUrl"
           id="imageUrl"
           placeholder="Auto image"
-          ngModel
-          #inputImage="ngModel"
-          required
           value="{{auto?.imageUrl}}"
 
         />
-        <ng-container *ngIf="inputImage.touched">
+        <!-- <ng-container *ngIf="inputImage.touched">
           <p class="error" *ngIf="inputImage.errors?.['required']">
             Image is required!
           </p>
-        </ng-container>
+        </ng-container> -->
 
-        <select id="type" name="type"  value="{{auto?.type}}">
+
+        <select id="type" formControlName="type" >
           <option value="0">Type: -----</option>
-          <option value="1">1 - Coupe</option>
-          <option value="2">2 - Sedan</option>
-          <option value="3">3 - Limosine</option>
-          <option value="4">4 - Combi</option>
-          <option value="5">5 - Suv</option>
-          <option value="6">6 - Jeep</option>
+          <option value="Coupe">1 - Coupe</option>
+          <option value="Sedan">2 - Sedan</option>
+          <option value="Limosine">3 - Limosine</option>
+          <option value="Combi">4 - Combi</option>
+          <option value="Suv">5 - Suv</option>
+          <option value="Jeep">6 - Jeep</option>
         </select>
-        <select id="motor" name="motor" value="{{auto?.motor}}">
+        <select id="motor" formControlName="motor">
           <option value="0">Motor -----</option>
-          <option value="1">1 - Benzin</option>
-          <option value="2">2 - Diesel</option>
-          <option value="3">3 - Hybrid</option>
-          <option value="4">4 - Electric</option>
+          <option value="Benzin">1 - Benzin</option>
+          <option value="Diesel">2 - Diesel</option>
+          <option value="Hybrid">3 - Hybrid</option>
+          <option value="Electric">4 - Electric</option>
         </select>
+
         <textarea
           id="description"
           placeholder="Description..."
-          name="description"
-          ngModel
-          #inputDescription="ngModel"
-          required
+          formControlName="description"
           value="{{auto?.description}}"
         ></textarea>
-        <ng-container *ngIf="inputDescription.touched">
+        <!-- <ng-container *ngIf="inputDescription.touched">
           <p class="error" *ngIf="inputDescription.errors?.['required']">
             Description is required!
           </p>
-        </ng-container>
+        </ng-container> -->
 
-        <button [routerLink]="auto?.id">Edit</button>
-        <button [routerLink]="auto?.id">Back</button>
+        <div class="btns">
+          <button [disabled]="form.invalid">Edit</button>
+          <button [routerLink]="auto?.id">Back</button>
+        </div>
       </form>
     </div>
   </section>

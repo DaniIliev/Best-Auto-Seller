@@ -1,35 +1,49 @@
 <main class="search">
-    <section id="search">
-        <h2>Search by Brand</h2>
+  <section id="search">
+    <h1>Search by Brand</h1>
 
-        <form class="search-wrapper" #form="ngForm" (ngSubmit)="search(form)">
-            <input id="search" type="text" name="text" ngModel #inputText="ngModel" required placeholder="Search here..."/>
-            <ng-container *ngIf="inputText.touched">
-                <p class="error" *ngIf="inputText.errors?.['required']">
-                    Input field is required!
-                </p>
-            </ng-container>
-            <button type="submit">Search</button>
-        </form>
+    <form class="search-wrapper" #form="ngForm" (ngSubmit)="search(form)">
+        <h3>Select brand:</h3>
+      <select id="brand" name="brand" ngModel #inputBrand="ngModel" required>
+        <option value="Audi">Audi</option>
+        <option value="BMW">BMW</option>
+        <option value="Mercedes">Mercedes</option>
+        <option value="VW">VW</option>
+        <option value="Ford">Ford</option>
+        <option value="Scoda">Scoda</option>
+        <option value="Peugeot">Peugeot</option>
+      </select>
+      <ng-container *ngIf="inputBrand.touched">
+        <p class="error" *ngIf="inputBrand.value == 0">
+          Input field is required!
+        </p>
+      </ng-container>
+      <button type="submit" class="submit" [disabled]="form.invalid">Search</button>
+    </form>
+</section>
+    <div id="search-container" *ngIf="!isLoading">
+      <ul class="card-wrapper ">
+        <li class="card" *ngFor="let auto of maches">
+          <img src="{{ auto.imageUrl }}" />
+          <p>
+            <strong>Brand: </strong><span class="name">{{ auto.brand }}</span>
+          </p>
+          <p>
+            <strong>Model: </strong><span class="model">{{ auto.model }}</span>
+          </p>
+          <p>
+            <strong>Car type:</strong
+            ><span class="car-type">{{ auto.type }}</span>
+          </p>
+          <a class="details-btn" [routerLink]="auto.id">Details</a>
+          <div class="h_container">
+            <i id="heart" class="far fa-heart"></i>
+          </div>
+        </li>
+      </ul>
+      <div id="no-autos" *ngIf="maches.length == 0">
+        <h2>There are no results found.</h2>
+      </div>
+    </div>
 
-        <div id="search-container">
-            <ul class="autos-wrapper" *ngFor="let auto of maches">
-                <img src="{{auto.imageUrl}}"/>
-                <p>
-                    <strong>Brand: </strong><span class="name">{{auto.brand}}</span>
-                </p>
-                <p>
-                    <strong>Model: </strong><span class="model">{{auto.model}}</span>
-                </p>
-                <p><strong>Car type:</strong><span class="car-type">{{auto.type}}</span></p>
-                <a class="details-btn" [routerLink]="auto.id">Details</a>
-                <div class="h_container">
-                    <i id="heart" class="far fa-heart"></i>
-              </div>
-            </ul>
-            <div id="no-autos" *ngIf="maches.length == 0">
-                <h2>There are no results found.</h2>
-            </div>
-        </div>
-    </section>
 </main>

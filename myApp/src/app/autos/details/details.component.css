@@ -76,7 +76,11 @@ img{
 
 .answer-comment{
 
-  margin-left: 3em;
+  margin-left: 10em;
+  border: 1px solid white;
+  border-radius: 1em;
+  background-image:linear-gradient(rgba(216, 135, 14, 0.5), rgba(243, 16, 73, 0.763));
+  display: inline-table;
 
 }
 
@@ -101,12 +105,31 @@ p{
 }
 
 .answer-comment h1, .answer-comment p {
-color: white;
+font-size: 20px;
+font-style: italic;
+color: black;
 }
 
+.content{
+  display: flex;
+}
 h1{
   text-align: center;
   font-style: italic;
+}
 
-  
+.post{
+  text-decoration: none;
+  margin: 0 auto;
+  font-size: 25px;
+  text-align: center;
+  width: 130px;
+  padding: 10px;
+  color: white;
+  background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+}
+
+textarea{
+  background-image:linear-gradient(rgba(252, 243, 229, 0.5), rgba(215, 116, 140, 0.763));
+
 }

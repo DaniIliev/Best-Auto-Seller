@@ -8,9 +8,10 @@ import { DetailsComponent } from './details/details.component';
 import { LoaderComponent } from '../shared/loader/loader.component';
 import { SharedModule } from '../shared/shared.module';
 import { EditComponent } from './edit/edit.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
-  declarations: [CatalogComponent, CreateAutoComponent, DetailsComponent, EditComponent],
+  declarations: [CatalogComponent, CreateAutoComponent, DetailsComponent, EditComponent, ContactsComponent],
   imports: [CommonModule, CarRoutingModule, FormsModule,ReactiveFormsModule,SharedModule],
   exports: [CatalogComponent, CreateAutoComponent],
 })

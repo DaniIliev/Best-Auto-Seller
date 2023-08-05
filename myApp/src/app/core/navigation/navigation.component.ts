@@ -10,6 +10,10 @@ import { UserService } from 'src/app/user/user.service';
 export class NavigationComponent {
   constructor(private userService: UserService, private router: Router) {}
 
+ get getLocalId(){
+    return this.userService.user?.localId;
+  }
+
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
   }
@@ -20,6 +24,10 @@ export class NavigationComponent {
   }
 
   ngOnInit():void{
-  console.log(this.isLoggedIn)
+  console.log(this.userService.user)
+  }
+
+  goToProfile(){
+    this.router.navigate([`user/profile/${this.getLocalId}`])
   }
 }

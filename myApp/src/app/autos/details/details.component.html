@@ -25,13 +25,13 @@
       <div class="description" id="description" name="description">
         <p><strong>Description:</strong> {{ auto?.description }}</p>
       </div>
-
       <div class="btns">
         <div *ngIf="owner" class="owner-btn">
-          <button routerLink="/edit">Edit</button>
+          <button (click)="edit()">Edit</button>
           <button (click)="deleteFn()">Delete</button>
         </div>
         <button routerLink="/autos">Back</button>
+        <button (click)="contact()">Contacts</button>
       </div>
     </div>
   </section>
@@ -54,8 +54,10 @@
         <p><span>{{username}}</span> comment:</p>
         <div class="answer">
           <form  [formGroup]="form" (submit)="postComment()">
-            <textarea formControlName="postText" id="comment" cols="30" rows="10"></textarea>
-            <button>Post</button>
+            <div class="content">
+              <textarea formControlName="postText" id="comment" cols="30" rows="10"></textarea>
+              <button class="post">Post</button>
+            </div>
           </form>
         </div>
       </div>

@@ -12,12 +12,14 @@ import { AppInterceptorProovider } from './app.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
+import { AuthenticatedComponent } from './authenticated/authenticated.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
+    AuthenticatedComponent,
   ],
   imports: [
     BrowserModule,

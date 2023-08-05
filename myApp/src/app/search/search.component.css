@@ -1,12 +1,119 @@
 .error {
-    color: red;
-    font-size: 15px;
-    font-style: italic;
-    text-shadow: none;
-  }
+  color: red;
+  font-size: 15px;
+  font-style: italic;
+  text-shadow: none;
+}
+.search-wrapper{
+padding: 1em;
+  width: 50em;
+  height: 3em;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.24);
+}
+.search-wrapper select {
+  width: 30em;
+  margin: auto;
+  height: 2.5em;
+  padding: 10px 5px;
+  float: left;
+  border: 0;
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+}
 
-  .card img {
-    margin: auto;
-    height: 290px;
-    width: 290px;
-  }
+.submit{
+text-decoration: none;
+margin: auto 50px;
+font-size: 15px;
+text-align: center;
+width: 130px;
+padding: 10px;
+color: white;
+background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+}
+
+h3{
+  margin: auto;
+}
+h1{
+  margin-top: 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 40px;
+  text-shadow: 0 0 3px #00ffa2, 0 0 5px #3c3cdd;
+}
+
+ul {
+  display: flex;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+ img {
+  overflow: hidden;
+  display: block;
+  width: 20em;
+  min-height: 15em;
+  max-height: 15.1em;
+
+}
+
+.details-btn {
+text-decoration: none;
+margin: auto 50px;
+font-size: 25px;
+text-align: center;
+width: 130px;
+padding: 10px;
+color: white;
+background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+
+}
+
+
+.card p {
+min-width: 90%;
+margin: auto;
+font-size: 20px;
+max-height: 50px;
+max-width: 30%;
+text-align: left;
+color:white
+}
+
+.card-wrapper {
+display: flex;
+list-style-type: none;
+overflow: scroll;
+}
+.card {
+  border: 1px solid #fff;
+  margin: 25px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 3em;
+  border-radius: 12px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.682), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  max-width: 22em;
+  padding: 1em;
+}
+
+
+h2{
+  text-align: center;
+  font-style: italic;
+  color: white;
+  border-radius: 0.5em;
+  border: 1px solid white;
+  background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+  margin: 8em;
+}

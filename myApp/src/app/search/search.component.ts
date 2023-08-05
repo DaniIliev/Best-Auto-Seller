@@ -13,6 +13,7 @@ export class SearchComponent implements OnInit {
   ids: string[] | undefined;
   isLoading: boolean = true;
   maches: Auto[] = []
+  
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
@@ -20,23 +21,24 @@ export class SearchComponent implements OnInit {
   }
 
   search(form: NgForm){
-    const {text} = form.value
+    const {brand} = form.value
+
+    this.maches = []
     this.apiService.getAllAutos().subscribe({
       next: (autos) => {
         this.autos = Object.values(autos);
         this.ids = Object.keys(autos);
         this.apiService.getArrayValues(this.autos, this.ids);
         this.isLoading = false;
-      }
-    });
-  
-    if(this.autos !== undefined){
-      for (const auto of this.autos) {
-        if(auto.brand.toLowerCase().includes(text.toLowerCase())){
-          this.maches.push(auto)
+
+        if(this.autos !== undefined){
+          for (const auto of this.autos) {
+            if(auto.brand.toLowerCase().includes(brand.toLowerCase())){
+              this.maches.push(auto)
+            }
+          }
         }
       }
-      console.log(this.maches)
-    }
+    });
   }
 }

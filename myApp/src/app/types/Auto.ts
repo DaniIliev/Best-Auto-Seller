@@ -1,3 +1,5 @@
+import { UserDetails } from "./userDetails"
+
 export interface Auto {
   brand: string,
   description: string,
@@ -8,5 +10,8 @@ export interface Auto {
   model: string,
   motor: string,
   type: string,
-  comments: Comment[]
+  comments: Comment[],
+  userDetails: UserDetails,
+
+  
 }

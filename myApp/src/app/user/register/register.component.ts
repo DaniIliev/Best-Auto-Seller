@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
     this.userService.register(email!, password!, rePassword!).subscribe({
       next: (responce) => {
         localStorage.setItem(envirenment.user, JSON.stringify(responce))
-        this.router.navigate(['/'])
+        this.router.navigate([`/user/profile/${responce.localId}`])
       },
       error: (error) => {
         return alert(error.error.error.message)
@@ -47,6 +47,5 @@ export class RegisterComponent implements OnInit {
     )
   }
   ngOnInit(): void {
-    console.log(EMAIL_DOMAINS);
   }
 }

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
 import { SearchComponent } from './search/search.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 const routes: Routes = [
   {

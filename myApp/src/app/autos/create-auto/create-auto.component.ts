@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { UserService } from 'src/app/user/user.service';
-import { Auto } from 'src/app/types/Auto';
 import { Router } from '@angular/router';
+import { UserDetails } from 'src/app/types/userDetails';
 
 @Component({
   selector: 'app-create-auto',
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateAutoComponent implements OnInit {
   userId: string | undefined= ''
+  userDetails: UserDetails | undefined
   constructor(
     private apiService: ApiService,
     private userService: UserService,
@@ -33,8 +34,11 @@ export class CreateAutoComponent implements OnInit {
       description,
     } = form.value;
 
-console.log(type,motor);
-
+    // this.userService.getAllUsersAndFindOne().subscribe({
+    //   next: () => {
+    //     this.userDetails = this.userService.userDetails
+    //   }
+    // })
 
     this.apiService.postAuto(
       brand, model, manufactureYear, type, motor, imageUrl, description, this.userId

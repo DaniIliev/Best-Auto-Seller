@@ -1,16 +1,4 @@
 .flex{
-    color: white;
-}
-main{
-    padding: 1em;
-  }
-.container{
-    border: 1px solid black;
-    border-radius: 2em;
-    background-color: brown;
-}
-
-.flex{
     text-shadow: 0 0 3px #e3e9e7, 0 0 5px #6565e9;
 
 }
@@ -20,7 +8,7 @@ main{
     font-size: 200em;
 }
 
-.profile{
+#profile{
     border: 1px solid black;
     margin: 0 auto;
     border-radius: 1em; 
@@ -32,20 +20,7 @@ main{
     box-shadow: 0 1em 1em 1em rgba(255, 255, 255, 0.2);   
 }
 
-button{
-    text-decoration: none;
-    margin: auto 50px;
-    font-size: 15px;
-    text-align: center;
-    font-style: italic;
-    
-    width: 5em;
-    padding: 10px;
-    color: white;
-    background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763)); 
-}
-
-.profile p{
+#profile p{
     font-size: 1.5em;
     font-style: oblique;
 }
@@ -57,7 +32,6 @@ ul {
     padding-right: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    display: flex;
   }
 
 
@@ -82,7 +56,6 @@ ul {
 
 }
 
-
 .card p {
   min-width: 90%;
   margin: auto;
@@ -101,6 +74,7 @@ ul {
 }
 .card {
     border: 1px solid #fff;
+    height: 500px;
     margin: 25px auto;
     display: flex;
     align-items: center;
@@ -110,8 +84,7 @@ ul {
     border-radius: 12px;
     backdrop-filter: blur(18px);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.682), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    max-width: 22em;
-    padding: 1em;
+    max-width: 1100px;
   }
 
   h2{
@@ -121,4 +94,9 @@ ul {
     border-radius: 0.5em;
     border: 1px solid white;
     background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+    
+  }
+
+  main{
+    padding: 1em;
   }

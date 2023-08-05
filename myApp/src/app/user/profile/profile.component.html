@@ -1,1 +1,109 @@
-<p>profile works!</p>
+<div *ngIf="isLoading">
+  <app-loader />
+</div>
+
+<main class="profileUser" *ngIf="!isLoading">
+  <section id="profile">
+    <div class="profile">
+      <h1>Your profile information</h1>
+
+      <ng-container class="container" *ngIf="!isEditMode">
+        <div class="flex">
+          <p>Email: {{ userDetails?.email }}</p>
+        </div>
+        <div class="flex">
+          <p>Country: {{ userDetails?.contry }}</p>
+        </div>
+        <div class="flex">
+          <p>City: {{ userDetails?.city }}</p>
+        </div>
+        <div class="flex">
+          <p>Street: {{ userDetails?.street }}</p>
+        </div>
+        <div class="flex">
+          <p>Phone: {{ userDetails?.phone }}</p>
+        </div>
+        <button class="edit-button" (click)="editMode()">Edit</button>
+      </ng-container>
+    </div>
+
+    <!-- Edit mod -->
+    <ng-container *ngIf="isEditMode">
+      <form #form="ngForm" (ngSubmit)="submit(form)">
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email..."
+          ngModel
+          #inputEmail="ngModel"
+        />
+
+        <input
+          type="text"
+          name="phone"
+          id="phone"
+          placeholder="Contact number..."
+          ngModel
+          #inputNumber="ngModel"
+        />
+
+        <input
+          type="text"
+          name="city"
+          id="city"
+          placeholder="City..."
+          ngModel
+          #inputCity="ngModel"
+        />
+
+        <input
+          type="text"
+          name="country"
+          id="country"
+          placeholder="Country..."
+          ngModel
+          #inputCountry="ngModel"
+        />
+        <input
+          type="text"
+          name="street"
+          id="street"
+          placeholder="Street..."
+          ngModel
+          #inputStreet="ngModel"
+        />
+        <button [disabled]="form.invalid">Submit</button>
+      </form>
+    </ng-container>
+  </section>
+
+  <div id="wrapper">
+    <h2>Your posts</h2>
+    <ul class="autos-wrapper">
+      <li class="card">
+        <img src="https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/brands/einstiegsseite/1280x854_P90351044_highRes_the-new-bmw-8-series.jpg" />
+        <p><strong>Brand: </strong><span class="name"></span></p>
+        <p><strong>Model: </strong><span class="model"></span></p>
+        <p><strong>Car type:</strong><span class="car-type"></span></p>
+        <a class="details-btn">Details</a>
+        <div class="h_container">
+          <i id="heart" class="far fa-heart"></i>
+        </div>
+      </li>
+      <li class="card">
+        <img src="https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/brands/einstiegsseite/1280x854_P90351044_highRes_the-new-bmw-8-series.jpg" />
+        <p><strong>Brand: </strong><span class="name"></span></p>
+        <p><strong>Model: </strong><span class="model"></span></p>
+        <p><strong>Car type:</strong><span class="car-type"></span></p>
+        <a class="details-btn">Details</a>
+        <div class="h_container">
+          <i id="heart" class="far fa-heart"></i>
+        </div>
+      </li>
+    </ul>
+    <div id="no-autos">
+      <h2>There are no results found.</h2>
+    </div>
+  </div>
+</main>

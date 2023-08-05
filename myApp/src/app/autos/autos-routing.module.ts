@@ -4,6 +4,7 @@ import { CatalogComponent } from './catalog/catalog.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { AuthActivate } from '../core/guards/auth-activate';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
           },
           {
             path: 'edit',
-            component: EditComponent
+            component: EditComponent,
+            canActivate: [AuthActivate]
           },
         ],
       },

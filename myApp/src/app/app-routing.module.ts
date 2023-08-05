@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { ERRORComponent } from './error/error.component';
+import { AuthActivate } from './core/guards/auth-activate';
 
 const routes: Routes = [
   {
@@ -14,21 +16,28 @@ const routes: Routes = [
 
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'add-auto',
-    component: CreateAutoComponent
+    component: CreateAutoComponent,
+    canActivate: [AuthActivate],
   },
   {
     path: 'search',
-    component: SearchComponent
+    component: SearchComponent,
   },
+  // {
+  //   path: 'autos',
+  //   loadChildren: () =>
+  //     import('./autos/autos.module').then((m) => m.AutosModule),
+  // },
   {
     //leazy-loading
     path: 'user',
-    loadChildren: () => import('./user/user.module').then((m) => m.UserModule)
-  }
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+  // { path: '**', component: ERRORComponent },
 ];
 
 @NgModule({
@@ -36,4 +45,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-

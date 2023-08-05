@@ -10,17 +10,17 @@ import { Auto } from 'src/app/types/Auto';
 export class CatalogComponent implements OnInit {
   autos: Auto[] = [];
   ids: string[] = [];
-  isLoading:boolean = true
+  isLoading: boolean = true;
   constructor(private apiService: ApiService) {}
   ngOnInit(): void {
     this.apiService.getAllAutos().subscribe({
       next: (autos) => {
-        this.autos = Object.values(autos)
-        this.ids = Object.keys(autos)
+        this.autos = Object.values(autos);
+        this.ids = Object.keys(autos);
 
-        this.apiService.getArrayValues(this.autos, this.ids)
-        this.isLoading = false
-      }
-    })
+        this.autos = this.apiService.getArrayValues(this.autos, this.ids);
+        this.isLoading = false;
+      },
+    });
   }
 }

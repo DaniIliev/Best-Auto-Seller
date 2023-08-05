@@ -28,8 +28,11 @@
     </div>
 
     <!-- Edit mod -->
-    <ng-container *ngIf="isEditMode">
-      <form #form="ngForm" (ngSubmit)="submit(form)">
+    <ng-container  *ngIf="isEditMode">
+      <div class="editProfile">
+
+      <form #form="ngForm" class="edit-form" (ngSubmit)="submit(form)">
+
         <input
           type="text"
           name="email"
@@ -75,34 +78,25 @@
         />
         <button [disabled]="form.invalid">Submit</button>
       </form>
+    </div>
     </ng-container>
   </section>
 
-  <div id="wrapper">
+  <div id="wrapper" *ngIf="!isEditMode">
     <h2>Your posts</h2>
     <ul class="autos-wrapper">
-      <li class="card">
-        <img src="https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/brands/einstiegsseite/1280x854_P90351044_highRes_the-new-bmw-8-series.jpg" />
-        <p><strong>Brand: </strong><span class="name"></span></p>
-        <p><strong>Model: </strong><span class="model"></span></p>
-        <p><strong>Car type:</strong><span class="car-type"></span></p>
-        <a class="details-btn">Details</a>
-        <div class="h_container">
-          <i id="heart" class="far fa-heart"></i>
-        </div>
-      </li>
-      <li class="card">
-        <img src="https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/brands/einstiegsseite/1280x854_P90351044_highRes_the-new-bmw-8-series.jpg" />
-        <p><strong>Brand: </strong><span class="name"></span></p>
-        <p><strong>Model: </strong><span class="model"></span></p>
-        <p><strong>Car type:</strong><span class="car-type"></span></p>
-        <a class="details-btn">Details</a>
+      <li class="card" *ngFor="let auto of autos">
+        <img src="{{auto.imageUrl}}" />
+        <p><strong>Brand: </strong><span class="name">{{auto.brand}}</span></p>
+        <p><strong>Model: </strong><span class="model">{{auto.model}}</span></p>
+        <p><strong>Car type:</strong><span class="car-type">{{auto.type}}</span></p>
+        <a class="details-btn" (click)="redirectToDetails(auto.id!)">Details</a>
         <div class="h_container">
           <i id="heart" class="far fa-heart"></i>
         </div>
       </li>
     </ul>
-    <div id="no-autos">
+    <div id="no-autos" *ngIf="autos.length == 0">
       <h2>There are no results found.</h2>
     </div>
   </div>

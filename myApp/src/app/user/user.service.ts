@@ -16,6 +16,7 @@ export class UserService implements OnDestroy{
   ids: string[] | undefined;
   userDetails: UserDetails | undefined
   username: string| undefined
+  userFirstRegistration: boolean = false
 
   regExp = /(@gmail.(com|bg)$)/;
 
@@ -91,4 +92,7 @@ export class UserService implements OnDestroy{
     this.subscription?.unsubscribe()
   }
 
+  userFirstRegisters():void{
+    this.userFirstRegistration = true
+  }
 }

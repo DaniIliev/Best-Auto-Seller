@@ -5,10 +5,7 @@
             <li><a routerLink="/">Home</a></li>
             <li><a routerLink="/autos">Catalog</a></li>
             <li><a routerLink="/search">Search</a></li>
-            <li><a routerLink="/add-auto">Add-Car</a></li>
-
-              
-      
+            <li *ngIf="isLoggedIn"><a routerLink="/add-auto">Add-Car</a></li>
     </ul>
     </div>
     <div>

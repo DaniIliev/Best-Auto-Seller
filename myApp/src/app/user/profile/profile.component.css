@@ -122,3 +122,51 @@ ul {
     border: 1px solid white;
     background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
   }
+
+
+
+
+  form{
+    padding: 4em;
+  }
+  
+  
+  .edit-form {
+    border: 1px solid #000;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3em;
+    flex-direction: column;
+    max-width: 40em;
+    border-radius: 2em;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 1em 1em 1em rgba(255, 255, 255, 0.2);
+    margin-left:20em;
+
+  }
+  input {
+    border-radius: 1em;
+    border: 1px solid black;
+    width: 18em;
+    height: 3em;
+  }
+  
+  
+  button {
+    margin: 0em;
+    width: 6em;
+    padding: 0.5em 1em;
+    border-radius: 100px;
+    color: #000;
+    border: 2px solid black;
+    font-weight: 580;
+    text-align: center;
+  }
+  
+  button:hover {
+    background-color: blue;
+    border: 2px solid green;
+    color: #fff;
+  }

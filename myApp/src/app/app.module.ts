@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
+import { ERRORComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
     HomeComponent,
     SearchComponent,
     AuthenticatedComponent,
+    ERRORComponent,
   ],
   imports: [
     BrowserModule,

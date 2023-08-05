@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
 import { UserDetails } from 'src/app/types/userDetails';
+import { ApiService } from 'src/app/autos/api.service';
+import { Auto } from 'src/app/types/Auto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,22 +13,28 @@ import { UserDetails } from 'src/app/types/userDetails';
 })
 export class ProfileComponent implements OnInit {
   userDetails: UserDetails | undefined;
+  autos: Auto[] = []
   isEditMode: boolean = false;
   ids: string[] = [];
+
   isLoading:boolean = true
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private apiService: ApiService, private router: Router) {
+    if(this.userService.userFirstRegistration){
+     this.editMode()
+    }
+  }
 
   editMode(): void {
-    this.isEditMode = !this.isEditMode;
+    this.isEditMode = true
+
   }
   
   ngOnInit(): void {
+    console.log(this.isEditMode)
     this.findOne();
-
+    this.findUserAutos()
   }
   submit(form: NgForm) {
-
-    let localId = this.userService.user?.localId;
     // form.setValue({
     //   city: this.userDetails?.city,
     //   email: this.userDetails?.email,
@@ -33,6 +42,7 @@ export class ProfileComponent implements OnInit {
     //   country: this.userDetails?.contry,
     //   street: this.userDetails?.street
     // })
+    let localId = this.userService.user?.localId;
 
     const { email, phone, country, city, street } = form.value;
 
@@ -60,10 +70,32 @@ findOne() {
           }
         }
         if(!this.userDetails){
-          this.editMode()
+          this.isEditMode = false
         }
         this.isLoading = false
       },
     });
+  }
+
+  findUserAutos(){
+    const id = this.userService.user?.localId 
+
+    this.apiService.getAllAutos().subscribe({
+      next: (autos) => {
+        const autoV =  Object.values(autos)
+        const idsV = Object.keys(autos)
+        autos = this.apiService.getArrayValues(autoV, idsV)
+
+        for (const auto of autos) {
+          if(auto.userId == id){
+            this.autos?.push(auto)
+          }
+        }
+      }
+    })
+  }
+
+  redirectToDetails(id:string):void{
+    this.router.navigate([`/autos/${id}`])
   }
 }

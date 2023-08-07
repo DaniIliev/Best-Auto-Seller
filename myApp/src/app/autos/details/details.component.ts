@@ -89,7 +89,7 @@ export class DetailsComponent implements OnInit {
     const id = this.activatedRoute.snapshot.params['autoId'];
 
     this.apiService.postLike(id, this.localId!).subscribe({
-      next: () => this.getLikes(),
+      next: () => this.getLikes()
     });
   }
   unLike() {
@@ -102,6 +102,7 @@ export class DetailsComponent implements OnInit {
             this.getLikes()
             this.userAlreadyLiked = false
             this.router.navigate([`/autos/${id}`])
+
           }
         });
       }
@@ -130,12 +131,13 @@ export class DetailsComponent implements OnInit {
 
   deleteFn() {
     const id = this.activatedRoute.snapshot.params['autoId'];
-
-    this.apiService.deleteAuto(id).subscribe({
-      next: () => {
-        this.router.navigate(['autos']);
-      },
-    });
+    if(confirm('Are you sure?')){
+      this.apiService.deleteAuto(id).subscribe({
+        next: () => {
+          this.router.navigate(['autos']);
+        },
+      });
+    }
   }
 
   contact() {

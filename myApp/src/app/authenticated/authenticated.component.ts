@@ -7,21 +7,17 @@ import { envirenment } from '../environment/environment';
   templateUrl: './authenticated.component.html',
   styleUrls: ['./authenticated.component.css'],
 })
-export class AuthenticatedComponent implements OnInit {
-  constructor(private userService: UserService) {}
-
+export class AuthenticatedComponent implements OnInit{
   isAuthenticated = true;
 
-  ngOnInit(): void {
-    this.userService.user$.subscribe({
-      next: () =>{
-        this.isAuthenticated = false
-        this.userService.isAuthenticated()
-      },
-      error: () => {
-        this.isAuthenticated = false
-        this.userService.isAuthenticated()
-      }
-    })
+  constructor(private userService: UserService) {
+    if (this.userService.isAuthenticated()) {
+      this.isAuthenticated = false;
+    }else{
+      this.isAuthenticated = false
     }
+  }
+
+  ngOnInit(): void {}
+
 }

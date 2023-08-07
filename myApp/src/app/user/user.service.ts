@@ -106,10 +106,12 @@ export class UserService implements OnDestroy {
 
 
   isAuthenticated(){
-    return this.user$$.next(JSON.parse(localStorage.getItem('user')!))
+    return this.user = JSON.parse(localStorage.getItem('user')!)
   }
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
+
+
 }

@@ -8,17 +8,16 @@ import { UserDetails } from '../types/userDetails';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService implements OnDestroy{
+export class UserService implements OnDestroy {
   private user$$ = new BehaviorSubject<User | undefined>(undefined);
   public user$ = this.user$$.asObservable();
+  private userDetails$$ = new BehaviorSubject <UserDetails | undefined>(undefined)
+  public userDetails$ = this.userDetails$$.asObservable()
 
   user: User | undefined;
   ids: string[] | undefined;
-  userDetails: UserDetails | undefined
-  username: string| undefined
-  userFirstRegistration: boolean = false
-
-  regExp = /(@gmail.(com|bg)$)/;
+  username: string |undefined
+  userDetails: UserDetails | undefined;
 
   subscription: Subscription | undefined;
 
@@ -29,6 +28,9 @@ export class UserService implements OnDestroy{
   constructor(private http: HttpClient) {
     this.subscription = this.user$.subscribe((user) => {
       this.user = user;
+      this.subscription = this.userDetails$.subscribe((user) => {
+        this.userDetails = user
+      })
     });
   }
 
@@ -55,12 +57,11 @@ export class UserService implements OnDestroy{
 
   logout() {
     localStorage.removeItem(envirenment.user);
-    this.username = undefined
     return this.user$$.next(undefined);
   }
 
   postDetailsAboutUser(
-    email: string,
+    username: string,
     phone: string,
     contry: string,
     city: string,
@@ -69,30 +70,46 @@ export class UserService implements OnDestroy{
   ) {
     return this.http.post<UserDetails>(
       'https://my-angular-project-9f44d-default-rtdb.firebaseio.com/users.json',
-      { email, phone, contry, city, street, localId }
+      { username, phone, contry, city, street, localId }
     );
   }
 
+  editDetailsAboutUser(
+    username: string,
+    phone: string,
+    contry: string,
+    city: string,
+    street: string,
+    localId: string,
+    userId: string
+  ) {
+
+    return this.http.patch<UserDetails>(
+      `https://my-angular-project-9f44d-default-rtdb.firebaseio.com/users/${userId}.json`,
+      { username, phone, contry, city, street, localId, userId }
+    );
+  }
 
   getAllUsers() {
-    return this.http.get<UserDetails[]>(
-      'https://my-angular-project-9f44d-default-rtdb.firebaseio.com/users.json')
+    return this.http
+      .get<UserDetails[]>(
+        'https://my-angular-project-9f44d-default-rtdb.firebaseio.com/users.json'
+      )
+  }
+
+  getArrayValuesUsers(users: UserDetails[], ids: string[]) {
+    for (let user of users) {
+      user.userId = ids.shift();
+    }
+    return users;
   }
 
 
-
-  getUsername(){
-
- this.username = this.user?.email.replace(this.regExp, '')
- return this.username
- 
+  isAuthenticated(){
+    return this.user$$.next(JSON.parse(localStorage.getItem('user')!))
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe()
-  }
-
-  userFirstRegisters():void{
-    this.userFirstRegistration = true
+    this.subscription?.unsubscribe();
   }
 }

@@ -12,5 +12,16 @@ export class AuthenticatedComponent implements OnInit {
 
   isAuthenticated = true;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.user$.subscribe({
+      next: () =>{
+        this.isAuthenticated = false
+        this.userService.isAuthenticated()
+      },
+      error: () => {
+        this.isAuthenticated = false
+        this.userService.isAuthenticated()
+      }
+    })
+    }
 }

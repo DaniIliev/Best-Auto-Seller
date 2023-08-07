@@ -3,9 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
 import { SearchComponent } from './search/search.component';
-import { ProfileComponent } from './user/profile/profile.component';
-import { ERRORComponent } from './error/error.component';
 import { AuthActivate } from './core/guards/auth-activate';
+import { ERRORComponent } from './error/error.component';
 
 const routes: Routes = [
   {
@@ -27,6 +26,10 @@ const routes: Routes = [
     path: 'search',
     component: SearchComponent,
   },
+  {
+    path: '404',
+    component: ERRORComponent
+  },
   // {
   //   path: 'autos',
   //   loadChildren: () =>
@@ -37,7 +40,7 @@ const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
   },
-  // { path: '**', component: ERRORComponent },
+  { path: '**', component: ERRORComponent },
 ];
 
 @NgModule({

@@ -13,7 +13,6 @@ import { Auto } from 'src/app/types/Auto';
 export class ContactsComponent implements OnInit {
   userDetails: UserDetails | undefined;
   isLoading:boolean = true
-  username: string | undefined
   autos: Auto[] = []
   constructor(
     private userService: UserService,
@@ -36,7 +35,6 @@ export class ContactsComponent implements OnInit {
         for (const user of users) {
           if (user.localId == id) {
             this.userDetails = user;
-            this.username = this.userService.username
             this.findUserAutos(user.localId)
             this.isLoading = false
           }

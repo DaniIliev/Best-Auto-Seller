@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { UserDetails } from 'src/app/types/userDetails';
 import { ApiService } from 'src/app/autos/api.service';
@@ -13,89 +13,130 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   userDetails: UserDetails | undefined;
-  autos: Auto[] = []
+  autos: Auto[] = [];
   isEditMode: boolean = false;
-  ids: string[] = [];
+  userFirstRegistration: boolean = false;
+  isLoading: boolean = true;
 
-  isLoading:boolean = true
-  constructor(private userService: UserService, private apiService: ApiService, private router: Router) {
-    if(this.userService.userFirstRegistration){
-     this.editMode()
-    }
+  form = this.fb.group({
+    username: ['', [Validators.required , Validators.minLength(4)]],
+    phone: ['', [Validators.required]],
+    country: ['',[Validators.required]],
+    city: ['', [Validators.required]],
+    street: ['', [Validators.required]],
+  });
+
+  constructor(
+    private userService: UserService,
+    private apiService: ApiService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.findOne();
+    this.findUserAutos();
   }
 
   editMode(): void {
-    this.isEditMode = true
-
+    this.isEditMode = !this.isEditMode;
   }
   
-  ngOnInit(): void {
-    console.log(this.isEditMode)
-    this.findOne();
-    this.findUserAutos()
-  }
-  submit(form: NgForm) {
-    // form.setValue({
-    //   city: this.userDetails?.city,
-    //   email: this.userDetails?.email,
-    //   phone: this.userDetails?.phone,
-    //   country: this.userDetails?.contry,
-    //   street: this.userDetails?.street
-    // })
-    let localId = this.userService.user?.localId;
-
-    const { email, phone, country, city, street } = form.value;
-
-    this.userService
-      .postDetailsAboutUser(email, phone, country, city, street, localId!)
-      .subscribe({
-        next: (user) => {
-          this.userDetails = user
-          this.findOne()
-          this.editMode()
-        },
-      });
-  }
-
-
-findOne() {
-    const id = this.userService.user?.localId 
+  findOne() {
+    const id = this.userService.user?.localId;
 
     this.userService.getAllUsers().subscribe({
       next: (users) => {
+        let ids: string[] = Object.keys(users);
         users = Object.values(users);
+        users = this.userService.getArrayValuesUsers(users, ids);
         for (const user of users) {
           if (user.localId == id) {
             this.userDetails = user;
+            this.form.setValue({
+              username: this.userDetails.username,
+              phone: this.userDetails.phone,
+              country: this.userDetails.contry,
+              city: this.userDetails.city,
+              street: this.userDetails.street,
+            });
           }
         }
-        if(!this.userDetails){
-          this.isEditMode = false
+        if (this.userDetails == undefined) {
+          this.userFirstRegistration = true;
         }
-        this.isLoading = false
+        this.isLoading = false;
       },
     });
   }
 
-  findUserAutos(){
-    const id = this.userService.user?.localId 
+  findUserAutos() {
+    const id = this.userService.user?.localId;
 
     this.apiService.getAllAutos().subscribe({
       next: (autos) => {
-        const autoV =  Object.values(autos)
-        const idsV = Object.keys(autos)
-        autos = this.apiService.getArrayValues(autoV, idsV)
+        const autoV = Object.values(autos);
+        const idsV = Object.keys(autos);
+        autos = this.apiService.getArrayValues(autoV, idsV);
 
         for (const auto of autos) {
-          if(auto.userId == id){
-            this.autos?.push(auto)
+          if (auto.userId == id) {
+            this.autos?.push(auto);
           }
         }
-      }
-    })
+      },
+    });
   }
 
-  redirectToDetails(id:string):void{
-    this.router.navigate([`/autos/${id}`])
+  submit() {
+    let localId = this.userService.user?.localId;
+    const { username, phone, country, city, street } = this.form.value;
+
+    this.userService
+      .postDetailsAboutUser(
+        username!,
+        phone!,
+        country!,
+        city!,
+        street!,
+        localId!
+      )
+      .subscribe({
+        next: (user) => {
+          this.findOne();
+          this.editMode();
+          this.router.navigate(['/autos']);
+        },
+      });
+  }
+
+  edit() {
+    const userId = this.userDetails?.userId;
+    const localId = this.userService.user?.localId;
+    const { username, phone, country, city, street } = this.form.value;
+    this.userService
+      .editDetailsAboutUser(
+        username!,
+        phone!,
+        country!,
+        city!,
+        street!,
+        localId!,
+        userId!
+      )
+      .subscribe({
+        next: () => {
+          this.editMode();
+          this.findOne();
+        },
+      });
+  }
+
+  back(): void {
+    this.editMode();
+  }
+
+  redirectToDetails(id: string): void {
+    this.router.navigate([`/autos/${id}`]);
   }
 }

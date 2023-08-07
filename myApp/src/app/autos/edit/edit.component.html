@@ -11,11 +11,11 @@
           id="brand"
           placeholder="Brand"
         /> 
-        <!-- <ng-container *ngIf="inputBrand.touched">
-          <p class="error" *ngIf="inputBrand.errors?.['required']">
+        <ng-container *ngIf="form.get('brand')?.touched">
+          <p class="error" *ngIf="form.get('brand')?.errors?.['required']">
             Brand is required!
           </p>
-        </ng-container> -->
+        </ng-container>
         <input
           type="text"
           formControlName="model"
@@ -23,11 +23,11 @@
           placeholder="Model"
           value="{{auto?.model}}"
         />
-        <!-- <ng-container *ngIf="inputModel.touched">
-          <p class="error" *ngIf="inputModel.errors?.['required']">
+        <ng-container *ngIf="form.get('model')?.touched">
+          <p class="error" *ngIf="form.get('model')?.errors?.['required']">
             Model is required!
           </p>
-        </ng-container> -->
+        </ng-container>
         <input
           type="date"
           formControlName="manufactureYear"
@@ -35,9 +35,9 @@
           placeholder="Year of manufacture"
           value="{{auto?.manufactureYear}}"
         />
-        <!-- <ng-container *ngIf="inputDate.touched"> -->
-          <!-- <p class="error">Date is required!</p>
-        </ng-container> -->
+        <ng-container *ngIf="form.get('manufactureYear')?.touched">
+          <p class="error" *ngIf="form.get('manufactureYear')?.errors?.['required']">Date is required!</p>
+        </ng-container>
         <input
           type="text"
           formControlName="imageUrl"
@@ -46,15 +46,15 @@
           value="{{auto?.imageUrl}}"
 
         />
-        <!-- <ng-container *ngIf="inputImage.touched">
-          <p class="error" *ngIf="inputImage.errors?.['required']">
+        <ng-container *ngIf="form.get('imageUrl')?.touched">
+          <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">
             Image is required!
           </p>
-        </ng-container> -->
+        </ng-container>
 
 
-        <select id="type" formControlName="type" >
-          <option value="0">Type: -----</option>
+        <select id="type" formControlName="type" placeholder="Select auto type...">
+          <option value="" disabled selected hidden>Type:-----</option>
           <option value="Coupe">1 - Coupe</option>
           <option value="Sedan">2 - Sedan</option>
           <option value="Limosine">3 - Limosine</option>
@@ -62,13 +62,26 @@
           <option value="Suv">5 - Suv</option>
           <option value="Jeep">6 - Jeep</option>
         </select>
-        <select id="motor" formControlName="motor">
-          <option value="0">Motor -----</option>
+
+        <ng-container *ngIf="form.get('type')?.touched">
+          <p class="error" *ngIf="form.get('type')?.errors?.['required']">
+            Type is required!
+          </p>
+        </ng-container>
+
+        <select id="motor" formControlName="motor" placeholder="Select auto motor...">
+          <option value="" disabled selected hidden>Motor -----</option>
           <option value="Benzin">1 - Benzin</option>
           <option value="Diesel">2 - Diesel</option>
           <option value="Hybrid">3 - Hybrid</option>
           <option value="Electric">4 - Electric</option>
         </select>
+
+        <ng-container *ngIf="form.get('motor')?.touched">
+          <p class="error" *ngIf="form.get('motor')?.errors?.['required']">
+            Motor is required!
+          </p>
+        </ng-container>
 
         <textarea
           id="description"
@@ -76,11 +89,11 @@
           formControlName="description"
           value="{{auto?.description}}"
         ></textarea>
-        <!-- <ng-container *ngIf="inputDescription.touched">
-          <p class="error" *ngIf="inputDescription.errors?.['required']">
+        <ng-container *ngIf="form.get('description')?.touched">
+          <p class="error" *ngIf="form.get('description')?.errors?.['required']">
             Description is required!
           </p>
-        </ng-container> -->
+        </ng-container>
 
         <div class="btns">
           <button [disabled]="form.invalid">Edit</button>

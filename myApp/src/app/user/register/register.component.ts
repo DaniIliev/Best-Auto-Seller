@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
     this.userService.register(email!, password!, rePassword!).subscribe({
       next: (responce) => {
         localStorage.setItem(envirenment.user, JSON.stringify(responce))
-        this.userService.userFirstRegisters()
         this.router.navigate([`/user/profile/${responce.localId}`])
       },
       error: (error) => {

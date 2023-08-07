@@ -23,15 +23,15 @@
           required
         />
         <ng-container *ngIf="inputDate.touched">
-          <p class="error">Date is required!</p>
+          <p class="error" *ngIf="inputDate.errors?.['required']">Date is required!</p>
         </ng-container>
         <input type="text" name="imageUrl" id="imageUrl" placeholder="Auto image" ngModel #inputImage="ngModel" required/>
         <ng-container *ngIf="inputImage.touched">
           <p class="error" *ngIf="inputImage.errors?.['required']">Image is required!</p>
         </ng-container>
 
-        <select id="type" name="type" ngModel #inputType="ngModel">
-          <option value="0">Type: -----</option>
+        <select id="type" name="type" ngModel #inputType="ngModel" required>
+          <option value="" disabled selected hidden>Type: -----</option>
           <option value="Coupe">1 - Coupe</option>
           <option value="Sedan">2 - Sedan</option>
           <option value="Limosine">3 - Limosine</option>
@@ -39,13 +39,23 @@
           <option value="Suv">5 - Suv</option>
           <option value="Jeep">6 - Jeep</option>
         </select>
-        <select id="motor" name="motor" ngModel #inputMotor="ngModel">
-          <option value="0">Motor -----</option>
+        <ng-container *ngIf="inputType.touched">
+          <p class="error" *ngIf="inputType.errors?.['required']">
+            Type is required!
+          </p>
+        </ng-container>
+        <select id="motor" name="motor" ngModel #inputMotor="ngModel" required>
+          <option value="" disabled selected hidden>Motor -----</option>
           <option value="Benzin">1 - Benzin</option>
           <option value="Diesel">2 - Diesel</option>
           <option value="Hybrid">3 - Hybrid</option>
           <option value="Electric">4 - Electric</option>
         </select>
+        <ng-container *ngIf="inputMotor.touched">
+          <p class="error" *ngIf="inputMotor.errors?.['required']">
+            Motor is required!
+          </p>
+        </ng-container>
         <textarea
           id="description"
           placeholder="Description..."
@@ -58,14 +68,9 @@
           <p class="error" *ngIf="inputDescription.errors?.['required']">Description is required!</p>
         </ng-container>
 
-        <button>Post</button>
+        <button [disabled]="form.invalid">Post</button>
       </form>
     </div>
-    <!-- <div class="img">
-      <img
-        src="https://whipflipnow.s3.amazonaws.com/blog/how+to+sell+a+car+in+ohio.jpg"
-      />
-    </div> -->
   </div>
   </section>
 </main>

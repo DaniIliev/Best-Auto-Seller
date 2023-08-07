@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { Comment } from 'src/app/types/Comment';
 import { User } from 'src/app/types/user';
+import { Like } from 'src/app/types/like';
 
 @Component({
   selector: 'app-details',
@@ -16,8 +17,11 @@ export class DetailsComponent implements OnInit {
   auto: Auto | undefined;
   comments: Comment[] | undefined;
   owner: boolean = false;
-  username: string | undefined
-
+  username: string | undefined;
+  likes: Like[] | undefined;
+  localId: string | undefined
+  userAlreadyLiked: boolean = false;
+  isLoading:boolean = true
 
   form = this.fb.group({
     postText: ['', [Validators.required, Validators.minLength(5)]],
@@ -38,7 +42,9 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.fetchAuto();
     this.getAllComments();
-    this.username = this.userService.username
+    this.getLikes();
+    this.getUserDetails()
+    this.localId = this.userService.user?.localId
   }
 
   fetchAuto(): void {
@@ -48,6 +54,7 @@ export class DetailsComponent implements OnInit {
       if (auto.userId == this.userService.user?.localId) {
         this.owner = true;
       }
+      this.isLoading = false
     });
   }
 
@@ -78,6 +85,49 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  postLike() {
+    const id = this.activatedRoute.snapshot.params['autoId'];
+
+    this.apiService.postLike(id, this.localId!).subscribe({
+      next: () => this.getLikes(),
+    });
+  }
+  unLike() {
+    const id = this.activatedRoute.snapshot.params['autoId'];
+    for (const like of this.likes!) {
+      if (like.localId == this.localId) {
+        const likeId = like.id;
+        this.apiService.unLike(id, likeId).subscribe({
+          next: () =>{
+            this.getLikes()
+            this.userAlreadyLiked = false
+            this.router.navigate([`/autos/${id}`])
+          }
+        });
+      }
+    }
+  }
+
+  getLikes() {
+    const id = this.activatedRoute.snapshot.params['autoId'];
+
+    this.apiService.getAllLikes(id).subscribe({
+      next: (likes) => {
+        if (likes == null) {
+          return;
+        }
+        let ids = Object.keys(likes);
+        this.likes = Object.values(likes);
+        this.likes = this.apiService.getArrayValuesLike(this.likes, ids);
+        for (const like of this.likes) {
+          if (like.localId == this.localId) {
+            this.userAlreadyLiked = true;
+          }
+        }
+      },
+    });
+  }
+
   deleteFn() {
     const id = this.activatedRoute.snapshot.params['autoId'];
 
@@ -94,5 +144,17 @@ export class DetailsComponent implements OnInit {
   edit() {
     const id = this.activatedRoute.snapshot.params['autoId'];
     this.router.navigate([`/autos/${id}/edit`]);
+  }
+
+  getUserDetails(){
+    this.userService.getAllUsers().subscribe({
+        next: (users) => {
+          for (const user of Object.values(users)) {
+              if(user.localId == this.localId){
+               this.username = user.username
+              }
+          }
+        }
+    })
   }
 }

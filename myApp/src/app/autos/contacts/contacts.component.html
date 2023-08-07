@@ -8,7 +8,7 @@
 
     <ng-container class="container">
       <div class="flex">
-        <p>Email: {{ userDetails?.email }}</p>
+        <p>Username: {{ userDetails?.username }}</p>
       </div>
       <div class="flex">
         <p>Country: {{ userDetails?.contry }}</p>
@@ -26,7 +26,7 @@
   </section>
 
   <section id="catalog">
-    <h2>{{ username }} cars</h2>
+    <h2>{{ userDetails?.username }} cars</h2>
     <ul class="card-wrapper">
       <li class="card" *ngFor="let auto of autos">
         <img src="{{ auto.imageUrl }}" />

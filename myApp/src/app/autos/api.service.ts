@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Auto } from '../types/Auto';
 import { Comment } from '../types/Comment';
 import { UserDetails } from '../types/userDetails';
+import { Like } from '../types/like';
 @Injectable({
   providedIn: 'root',
 })
@@ -53,6 +54,7 @@ export class ApiService {
     return autos;
   }
 
+
   getAllComments(id: string) {
     return this.http.get<Comment[]>(
       `https://my-angular-project-9f44d-default-rtdb.firebaseio.com/autos/${id}/comments.json`
@@ -64,6 +66,31 @@ export class ApiService {
       `https://my-angular-project-9f44d-default-rtdb.firebaseio.com/autos/${id}/comments.json`,
       { name, comment }
     );
+  }
+
+  postLike(id:string, localId: string){
+    return this.http.post<Like>(
+      `https://my-angular-project-9f44d-default-rtdb.firebaseio.com/autos/${id}/likes.json`,
+      { localId }
+    );
+  }
+  unLike(id:string, likeId:string){
+    return this.http.delete(
+      `https://my-angular-project-9f44d-default-rtdb.firebaseio.com/autos/${id}/likes/${likeId}.json`,
+    );
+  }
+
+  getAllLikes(id: string) {
+    return this.http.get<Like[]>(
+      `https://my-angular-project-9f44d-default-rtdb.firebaseio.com/autos/${id}/likes.json`
+    );
+  }
+
+  getArrayValuesLike(likes: Like[], ids: string[]) {
+    for (let like of likes) {
+      like.id = ids.shift()!;
+    }
+    return likes;
   }
 
   deleteAuto(id: string) {

@@ -1,9 +1,33 @@
-
-<main class="detailsPage">
+<div *ngIf="isLoading">
+  <app-loader/>
+</div>
+<main class="detailsPage" *ngIf="!isLoading">
   <section>
     <h1>Details about the Car</h1>
     <div class="all">
-      <img src="{{ auto?.imageUrl }}" />
+      <div class="car">
+        <img src="{{ auto?.imageUrl }}" />
+        <div *ngIf="localId != undefined">
+          <div *ngIf="!owner">
+            <div *ngIf="!userAlreadyLiked">
+              <button (click)="postLike()" class="btn-secondary like-review">
+                <i class="fa fa-heart" aria-hidden="true"></i> Like
+              </button>
+            </div>
+            <div *ngIf="userAlreadyLiked">
+              <button (click)="unLike()" class="btn-secondary like-review">
+                <i class="fa fa-heart" aria-hidden="true"></i> Unlike
+              </button>
+            </div>
+          </div>
+        </div>
+      <div class="text" *ngIf="likes?.length! > 0">
+        <p>Likes count: {{likes?.length}}</p>
+       </div>
+       <div class="text" *ngIf="likes == undefined ">
+        <p>Likes count: 0 :(</p>
+       </div>
+      </div>
       <div class="details">
         <div type="text" name="brand" id="brand">
           <strong>Auto Brand:</strong> {{ auto?.brand }}

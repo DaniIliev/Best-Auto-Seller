@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
@@ -15,13 +15,13 @@ export class EditComponent implements OnInit {
   owner: boolean = false;
 
   form = this.fb.group({
-    brand: [''],
-    description: [''],
-    manufactureYear: [''],
-    imageUrl:[''],
-    model: [''],
-    motor: [''],
-    type: [''],
+    brand: ['', [Validators.required]],
+    description: ['', [Validators.required]],
+    manufactureYear: ['', [Validators.required]],
+    imageUrl:['' ,[Validators.required]],
+    model: ['', [Validators.required]],
+    motor: ['', [Validators.required]],
+    type: ['', [Validators.required]],
 
   });
   constructor(

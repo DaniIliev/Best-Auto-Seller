@@ -1,3 +1,4 @@
+import { Like } from "./like"
 import { UserDetails } from "./userDetails"
 
 export interface Auto {
@@ -12,6 +13,5 @@ export interface Auto {
   type: string,
   comments: Comment[],
   userDetails: UserDetails,
-
-  
+  likes: Like[]
 }

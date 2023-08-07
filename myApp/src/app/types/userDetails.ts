@@ -1,5 +1,5 @@
 export interface UserDetails{
-    email:string,
+    username:string,
     phone:string,
     street:string,
     contry:string,

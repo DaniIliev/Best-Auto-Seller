@@ -1,6 +1,7 @@
 .all{
   display: flex;
 }
+
 .details{
   margin-left: 2em;
   width: 15em;
@@ -33,8 +34,9 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  
 }
-button {
+button { 
   text-decoration: none;
   margin: 0 auto;
   font-size: 25px;
@@ -42,7 +44,7 @@ button {
   width: 130px;
   padding: 10px;
   color: white;
-  background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+  background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763)); 
 }
 img{
   width: 20em;
@@ -81,11 +83,11 @@ img{
   border-radius: 1em;
   background-image:linear-gradient(rgba(216, 135, 14, 0.5), rgba(243, 16, 73, 0.763));
   display: inline-table;
+  margin-top: -2em;
 
 }
 
 .commentars{
-  margin-top: 3em;
   margin-left: 2em;
   width: 25em;
   border: 1px solid white;
@@ -132,4 +134,73 @@ h1{
 textarea{
   background-image:linear-gradient(rgba(252, 243, 229, 0.5), rgba(215, 116, 140, 0.763));
 
+}
+
+
+
+
+.car{
+  display: block;
+}
+
+
+
+
+
+
+
+.like-content {
+  display: inline-block;
+  width: 100%;
+  margin: 40px 0 0;
+  padding: 40px 0 0;
+  font-size: 18px;
+  border-top: 10px dashed #eee;
+  text-align: center;
+}
+.like-content span {
+color: #9d9da4;
+font-family: monospace;
+}
+.btn-secondary {
+  display: block;
+  /* margin: 40px auto 0px; */
+  margin-left: 9em;
+  text-align: center;
+  background: #ed2553;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
+  padding: 10px 17px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  text-decoration: none;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.btn-secondary:hover {
+  transform: translateY(-3px);
+}
+.btn-secondary .fa {
+  margin-right: 5px;
+}
+.animate-like {
+animation-name: likeAnimation;
+animation-iteration-count: 1;
+animation-fill-mode: forwards;
+animation-duration: 0.65s;
+}
+@keyframes likeAnimation {
+0%   { transform: scale(30); }
+100% { transform: scale(1); }
+}
+
+
+.text p{
+color: white;
+margin-left: 3.5em;
+font-size: 2em;
+margin-top: 0.5em;
 }

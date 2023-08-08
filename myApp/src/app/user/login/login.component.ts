@@ -28,7 +28,7 @@ export class LoginComponent {
         this.successfulLogin = true;
         setTimeout(() => {
           this.router.navigate(['/']);
-        }, 1200);
+        }, 1500);
       },
       error: (error) => {
         return alert(error.error.error.message);

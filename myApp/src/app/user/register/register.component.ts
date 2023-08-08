@@ -12,6 +12,7 @@ import { envirenment } from 'src/app/environment/environment';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  successfulRegister: boolean = false
   form = this.fb.group({
     email: ['', [Validators.required, appEmailValidator(EMAIL_DOMAINS)]],
 
@@ -38,7 +39,10 @@ export class RegisterComponent implements OnInit {
     this.userService.register(email!, password!, rePassword!).subscribe({
       next: (responce) => {
         localStorage.setItem(envirenment.user, JSON.stringify(responce))
-        this.router.navigate([`/user/profile/${responce.localId}`])
+        this.successfulRegister = true
+        setTimeout(() => {
+          this.router.navigate([`/user/profile/${responce.localId}`])
+        }, 1500);
       },
       error: (error) => {
         return alert(error.error.error.message)

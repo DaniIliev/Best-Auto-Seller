@@ -1,7 +1,10 @@
 <main class="register">
   <section id="register">
-
-    <div class="form">
+    <div class="register-succs" *ngIf="successfulRegister">
+      <img src="../../../assets/successful.png">
+      <p>Register successful!</p>
+    </div>
+    <div class="form" *ngIf="!successfulRegister">
       <h2>Register page</h2>
       <form class="register-form" [formGroup]="form" (ngSubmit)="register()">
         <h1>Please fill in this form to create an account</h1>

@@ -44,6 +44,7 @@ export class ContactsComponent implements OnInit {
   }
 
   findUserAutos(id:string){
+    this.isLoading = true
     this.apiService.getAllAutos().subscribe({
       next: (autos) => {
         const autoV =  Object.values(autos)
@@ -54,6 +55,7 @@ export class ContactsComponent implements OnInit {
             this.autos?.push(auto)
           }
         }
+        this.isLoading = false
       }
     })
   }

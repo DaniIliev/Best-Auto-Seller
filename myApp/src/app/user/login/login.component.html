@@ -1,6 +1,10 @@
 <main class="login">
   <section id="login">
-    <div class="form">
+    <div class="login-succs" *ngIf="successfulLogin">
+      <img src="../../../assets/successful.png">
+      <p>Login successful!</p>
+    </div>
+    <div class="form" *ngIf="!successfulLogin">
       <h2>Login page</h2>
       <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
         <h1>To log in to your account, you must complete the login form</h1>

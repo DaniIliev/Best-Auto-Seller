@@ -3,13 +3,13 @@
   display: block;
 }
 .catalog {
-  min-height: 90vh;
+  /* min-height: 90vh; */
   width: 100%;
 }
 
 h2 {
   /* 40 */
-  margin-top: -50px;
+  margin-top: -40px;
   text-align: center;
   font-size: 40px;
   font-style: italic;
@@ -73,7 +73,6 @@ h2 {
 ul {
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 10px;
   padding-bottom: 10px;
 }
 

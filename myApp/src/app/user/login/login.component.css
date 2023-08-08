@@ -85,3 +85,20 @@ label{
   padding-bottom: 13em;
 
 }
+
+
+.login-succs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.login-succs p {
+    font-size: 4em;
+    font-style: italic;
+    color: white;
+}
+img{
+   width: 3em; 
+   height: 3.5em;
+}

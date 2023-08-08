@@ -23,7 +23,14 @@
              </div>
           </div>
         </div>
-
+        <div class="noUser" *ngIf="localId == undefined || owner">
+          <div class="text" *ngIf="likes?.length! > 0">
+            <p>Likes count: {{likes?.length}}</p>
+           </div>
+           <div class="text" *ngIf="likes == undefined ">
+            <p>Likes count: 0 :(</p>
+           </div>
+        </div>
       </div>
       <div class="details">
         <div type="text" name="brand" id="brand">

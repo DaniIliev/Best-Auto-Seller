@@ -169,3 +169,11 @@ hr{
   margin: 0.1em;
 
 }
+
+section{
+  padding-bottom: 3em;
+}
+
+.noUser .text p{
+margin-left: 2em;
+}

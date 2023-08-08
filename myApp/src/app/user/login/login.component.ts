@@ -8,27 +8,31 @@ import { envirenment } from 'src/app/environment/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  appEmailDomains = EMAIL_DOMAINS
+  appEmailDomains = EMAIL_DOMAINS;
+  successfulLogin: boolean = false;
 
-  constructor(private userService: UserService, private router: Router){}
+  constructor(private userService: UserService, private router: Router) {}
 
-  login(form: NgForm):void {
-    if(form.invalid){
-      return 
+  login(form: NgForm): void {
+    if (form.invalid) {
+      return;
     }
-    const {email, password} = form.value
+    const { email, password } = form.value;
 
-    this.userService.login(email!,password!).subscribe({
+    this.userService.login(email!, password!).subscribe({
       next: (responce) => {
-        localStorage.setItem(envirenment.user, JSON.stringify(responce))
-        this.router.navigate(['/'])
+        localStorage.setItem(envirenment.user, JSON.stringify(responce));
+        this.successfulLogin = true;
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1200);
       },
       error: (error) => {
-        return alert(error.error.error.message)
-      }
-    })
+        return alert(error.error.error.message);
+      },
+    });
   }
 }

@@ -1,4 +1,5 @@
 export interface Comment {
     comment: string,
-    name: string
+    name: string,
+    created_at:string
 }

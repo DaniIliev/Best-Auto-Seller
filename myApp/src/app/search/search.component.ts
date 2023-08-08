@@ -13,7 +13,7 @@ export class SearchComponent implements OnInit {
   autos: Auto[] | undefined;
   ids: string[] | undefined;
   isLoading: boolean = false;
-  maches: Auto[] = []
+  maches: Auto[] | undefined
   
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -35,7 +35,7 @@ export class SearchComponent implements OnInit {
         if(this.autos !== undefined){
           for (const auto of this.autos) {
             if(auto.brand.toLowerCase().includes(brand.toLowerCase())){
-              this.maches.push(auto)
+              this.maches?.push(auto)
             }
           }
         }

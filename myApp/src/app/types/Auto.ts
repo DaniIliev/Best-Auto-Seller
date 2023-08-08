@@ -13,5 +13,6 @@ export interface Auto {
   type: string,
   comments: Comment[],
   userDetails: UserDetails,
-  likes: Like[]
+  likes: Like[],
+  createt_at: string
 }

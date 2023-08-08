@@ -102,7 +102,6 @@ img{
 p{
   padding: 0;
   padding-left: 1em;
-  padding-top: 0.5em;
   margin: 0;
 }
 
@@ -145,62 +144,28 @@ textarea{
 
 
 
-
-
-
-
-.like-content {
-  display: inline-block;
-  width: 100%;
-  margin: 40px 0 0;
-  padding: 40px 0 0;
-  font-size: 18px;
-  border-top: 10px dashed #eee;
-  text-align: center;
-}
-.like-content span {
-color: #9d9da4;
-font-family: monospace;
-}
-.btn-secondary {
-  display: block;
-  /* margin: 40px auto 0px; */
-  margin-left: 9em;
-  text-align: center;
-  background: #ed2553;
-  border-radius: 3px;
-  box-shadow: 0 10px 20px -8px rgb(240, 75, 113);
-  padding: 10px 17px;
-  font-size: 18px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  color: #ffffff;
-  text-decoration: none;
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-.btn-secondary:hover {
-  transform: translateY(-3px);
-}
-.btn-secondary .fa {
-  margin-right: 5px;
-}
-.animate-like {
-animation-name: likeAnimation;
-animation-iteration-count: 1;
-animation-fill-mode: forwards;
-animation-duration: 0.65s;
-}
-@keyframes likeAnimation {
-0%   { transform: scale(30); }
-100% { transform: scale(1); }
-}
-
-
 .text p{
 color: white;
-margin-left: 3.5em;
+/* margin-left: 3.5em; */
 font-size: 2em;
-margin-top: 0.5em;
+}
+
+
+.like, .unlike{
+  width: 3em;
+  height: auto;
+}
+.container2{
+  display: flex;
+}
+
+hr{
+  background-color: black;
+}
+
+.comment-content{
+  border: 1px solid black;
+  border-radius: 2em;
+  margin: 0.1em;
+
 }

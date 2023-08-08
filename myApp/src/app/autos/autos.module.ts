@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { CatalogComponent } from './catalog/catalog.component';
 import { CarRoutingModule } from './autos-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [CatalogComponent, CreateAutoComponent, DetailsComponent, EditComponent, ContactsComponent],
-  imports: [CommonModule, CarRoutingModule, FormsModule,ReactiveFormsModule,SharedModule],
+  imports: [CommonModule, CarRoutingModule, FormsModule,ReactiveFormsModule,SharedModule, DatePipe],
   exports: [CatalogComponent, CreateAutoComponent],
 })
 export class AutosModule {}

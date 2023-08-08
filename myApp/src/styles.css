@@ -1,5 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
-
+/* * {
+    padding: 0;
+    margin: 0;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  } */
 
 body{
     background-image: url('./assets/pxfuel.jpg');
@@ -9,4 +22,27 @@ body{
     background-size: cover;
     padding: 0;
     margin: 0;
+}
+
+
+
+
+footer {
+    background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
+    color: white;
+    margin-top: auto; 
+    /* position: absolute; */
+    display: block;
+    /* bottom: 0%; */
+    width: 130%;
+    max-width: 1450px; 
+    /* margin-bottom: 0 auto; */
+
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2em;
+    text-align: center;
 }

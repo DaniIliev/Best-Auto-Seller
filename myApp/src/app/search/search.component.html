@@ -47,7 +47,10 @@
         </div>
       </li>
     </ul>
-    <div id="no-autos" *ngIf="maches.length == 0">
+    <div id="welcome" *ngIf="maches == undefined">
+      <h2>Welcome to Search page!</h2>
+    </div>
+    <div id="no-autos" *ngIf="maches?.length == 0">
       <h2>There are no results found.</h2>
     </div>
   </div>

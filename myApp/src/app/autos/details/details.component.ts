@@ -7,6 +7,7 @@ import { UserService } from 'src/app/user/user.service';
 import { Comment } from 'src/app/types/Comment';
 import { User } from 'src/app/types/user';
 import { Like } from 'src/app/types/like';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -32,7 +33,8 @@ export class DetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router, 
+    private datePipe: DatePipe
   ) {}
 
   get isLoggedIn() {
@@ -72,8 +74,10 @@ export class DetailsComponent implements OnInit {
   postComment() {
     const id = this.activatedRoute.snapshot.params['autoId'];
     const { postText } = this.form.value;
+    const createt_at =this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss')
 
-    this.apiService.postComment(id, postText!, this.username!).subscribe({
+
+    this.apiService.postComment(id, postText!, this.username!, createt_at!).subscribe({
       next: () => {
         this.form.reset();
         this.getAllComments();

@@ -24,7 +24,8 @@ export class ApiService {
     motor: string,
     imageUrl: string,
     description: string,
-    userId: string | undefined
+    userId: string | undefined,
+    createt_at:string
   ) {
     return this.http.post<Auto[]>(
       'https://my-angular-project-9f44d-default-rtdb.firebaseio.com/autos.json',
@@ -37,6 +38,7 @@ export class ApiService {
         imageUrl,
         description,
         userId,
+        createt_at
       }
     );
   }
@@ -61,10 +63,10 @@ export class ApiService {
     );
   }
 
-  postComment(id: string, comment: string, name: string) {
+  postComment(id: string, comment: string, name: string , created_at:string) {
     return this.http.post<Comment[]>(
       `https://my-angular-project-9f44d-default-rtdb.firebaseio.com/autos/${id}/comments.json`,
-      { name, comment }
+      { name, comment, created_at }
     );
   }
 

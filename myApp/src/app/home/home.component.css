@@ -2,6 +2,7 @@
   color: white;
   font-size: 30px;
   text-shadow: 0 0 3px #00ffa2, 0 0 5px #0000ff;
+  padding-bottom: 8em;
 }
 
 #home h1 {
@@ -28,7 +29,7 @@ section {
 
 
 .end-btn1{
-  margin-top: 10em;
+  margin-top: 5em;
   margin-left: 15em;
   background-image:linear-gradient(rgba(17, 16, 14, 0.974), rgba(16, 43, 243, 0.763));
   border: none;
@@ -45,7 +46,7 @@ section {
 
 }
 .end-btn2{
-  margin-top: 10em;
+  margin-top: 5em;
   margin-right: 15em;
   border: none;
   width: 17em;
@@ -64,3 +65,17 @@ section {
   display: flex;
   justify-content: space-between;
 }
+
+
+
+
+.date{
+  margin-left: 20.5em;
+}
+
+
+
+
+
+
+

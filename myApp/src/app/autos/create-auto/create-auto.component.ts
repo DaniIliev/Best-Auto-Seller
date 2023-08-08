@@ -4,6 +4,7 @@ import { ApiService } from '../api.service';
 import { UserService } from 'src/app/user/user.service';
 import { Router } from '@angular/router';
 import { UserDetails } from 'src/app/types/userDetails';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-create-auto',
@@ -16,7 +17,8 @@ export class CreateAutoComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -33,15 +35,10 @@ export class CreateAutoComponent implements OnInit {
       imageUrl,
       description,
     } = form.value;
-
-    // this.userService.getAllUsersAndFindOne().subscribe({
-    //   next: () => {
-    //     this.userDetails = this.userService.userDetails
-    //   }
-    // })
+     const createt_at =this.datePipe.transform((new Date), 'MM/dd/yyyy')
 
     this.apiService.postAuto(
-      brand, model, manufactureYear, type, motor, imageUrl, description, this.userId
+      brand, model, manufactureYear, type, motor, imageUrl, description, this.userId, createt_at!
     ).subscribe({
       next: () => {
         this.router.navigate(['/autos'])

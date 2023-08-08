@@ -13,7 +13,8 @@ import { envirenment } from 'src/app/environment/environment';
 export class LoginComponent {
   appEmailDomains = EMAIL_DOMAINS;
   successfulLogin: boolean = false;
-
+  hasError: boolean = false
+  errMsg: string | undefined
   constructor(private userService: UserService, private router: Router) {}
 
   login(form: NgForm): void {
@@ -31,7 +32,13 @@ export class LoginComponent {
         }, 1500);
       },
       error: (error) => {
-        return alert(error.error.error.message);
+        this.errMsg = error.error.error.message
+        this.hasError = true
+        setTimeout(() => {
+          this.hasError = false
+          form.reset()
+          this.router.navigate(['/user/login'])
+        }, 3000);
       },
     });
   }

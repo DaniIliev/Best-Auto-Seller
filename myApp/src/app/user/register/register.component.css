@@ -2,7 +2,7 @@
 
 .error {
   color: red;
-  font-size: 11px;
+  font-size: 15px;
   font-style: italic;
   text-shadow: none;
 }
@@ -79,7 +79,24 @@ h1{
     font-style: italic;
     color: white;
 }
-img{
+.register-succs img{
    width: 3em; 
    height: 3.5em;
+}
+
+
+.register-error{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.register-error p {
+  font-size: 4em;
+  font-style: italic;
+  color: white;
+}
+.register-error img{
+ width: 3em; 
+ height: 3.5em;
 }

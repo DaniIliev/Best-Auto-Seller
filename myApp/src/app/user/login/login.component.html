@@ -4,7 +4,11 @@
       <img src="../../../assets/successful.png">
       <p>Login successful!</p>
     </div>
-    <div class="form" *ngIf="!successfulLogin">
+    <div class="login-error" *ngIf="hasError">
+      <img src="../../../assets/error.png">
+      <p>Error: {{errMsg}}</p>
+    </div>
+    <div class="form" *ngIf="!successfulLogin && !hasError">
       <h2>Login page</h2>
       <form class="login-form" #form="ngForm" (ngSubmit)="login(form)">
         <h1>To log in to your account, you must complete the login form</h1>

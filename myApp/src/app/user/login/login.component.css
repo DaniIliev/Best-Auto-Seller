@@ -98,7 +98,24 @@ label{
     font-style: italic;
     color: white;
 }
-img{
+.login-succs img{
+   width: 3em; 
+   height: 3.5em;
+}
+
+
+.login-error{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.login-error p {
+    font-size: 4em;
+    font-style: italic;
+    color: white;
+}
+.login-error img{
    width: 3em; 
    height: 3.5em;
 }

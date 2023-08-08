@@ -4,7 +4,11 @@
       <img src="../../../assets/successful.png">
       <p>Register successful!</p>
     </div>
-    <div class="form" *ngIf="!successfulRegister">
+    <div class="register-error" *ngIf="hasError">
+      <img src="../../../assets/error.png">
+      <p>Error: {{errMsg}}</p>
+    </div>
+    <div class="form" *ngIf="!successfulRegister && !hasError">
       <h2>Register page</h2>
       <form class="register-form" [formGroup]="form" (ngSubmit)="register()">
         <h1>Please fill in this form to create an account</h1>

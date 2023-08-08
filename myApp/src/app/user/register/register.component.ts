@@ -13,6 +13,8 @@ import { envirenment } from 'src/app/environment/environment';
 })
 export class RegisterComponent implements OnInit {
   successfulRegister: boolean = false
+  hasError: boolean = false
+  errMsg:string | undefined
   form = this.fb.group({
     email: ['', [Validators.required, appEmailValidator(EMAIL_DOMAINS)]],
 
@@ -33,7 +35,13 @@ export class RegisterComponent implements OnInit {
     const { email, password, rePassword } = this.form.value;
 
     if(password !== rePassword){
-      return alert('Password`s dont match!')
+      this.errMsg = 'Password`s dont match!'
+      this.hasError = true
+      setTimeout(() => {
+        this.hasError = false
+        this.router.navigate(['/user/register'])
+      }, 3000);
+      return
     }
 
     this.userService.register(email!, password!, rePassword!).subscribe({
@@ -45,7 +53,13 @@ export class RegisterComponent implements OnInit {
         }, 1500);
       },
       error: (error) => {
-        return alert(error.error.error.message)
+        this.errMsg = error.error.error.message
+        this.hasError = true
+        setTimeout(() => {
+          this.hasError = false
+          this.form.reset()
+          this.router.navigate(['/user/register'])
+        }, 3000);
       }
     }
     )

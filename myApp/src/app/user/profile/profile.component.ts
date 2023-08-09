@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
   }
   
   findOne() {
-    const id = this.userService.user?.localId;
+    const localId = this.userService.user?.localId;
     this.autos = []
     this.isLoading = true
     this.userService.getAllUsers().subscribe({
@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit {
         users = Object.values(users);
         users = this.userService.getArrayValuesUsers(users, ids);
         for (const user of users) {
-          if (user.localId == id) {
+          if (user.localId == localId) {
             this.userDetails = user;
             this.form.setValue({
               username: this.userDetails.username,
@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
   }
 
   findUserAutos() {
-    const id = this.userService.user?.localId;
+    const localId = this.userService.user?.localId;
 
     this.apiService.getAllAutos().subscribe({
       next: (autos) => {
@@ -80,7 +80,7 @@ export class ProfileComponent implements OnInit {
         autos = this.apiService.getArrayValues(autoV, idsV);
 
         for (const auto of autos) {
-          if (auto.userId == id) {
+          if (auto.userId == localId) {
             this.autos?.push(auto);
           }
         }

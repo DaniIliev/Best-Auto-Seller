@@ -27,15 +27,15 @@ export class ContactsComponent implements OnInit {
   }
 
   getUserDetails() {
-    const id = this.activatedRoute.snapshot.params['id'];
+    const ownerId = this.activatedRoute.snapshot.params['id'];
 
     this.userService.getAllUsers().subscribe({
       next: (users) => {
         users = Object.values(users);
         for (const user of users) {
-          if (user.localId == id) {
+          if (user.localId == ownerId) {
             this.userDetails = user;
-            this.findUserAutos(user.localId)
+            this.findUserAutos(ownerId)
           }
         }
       },

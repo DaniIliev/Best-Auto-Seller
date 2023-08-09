@@ -35,7 +35,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AutosModule,
     FormsModule,
     AppRoutingModule,
-
   ],
   providers: [AppInterceptorProovider, DatePipe],
   bootstrap: [AppComponent]

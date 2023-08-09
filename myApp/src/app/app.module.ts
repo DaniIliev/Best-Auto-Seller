@@ -29,12 +29,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     CoreModule,
     SharedModule,
     AutosModule,
     FormsModule,
+    AppRoutingModule,
+
   ],
   providers: [AppInterceptorProovider, DatePipe],
   bootstrap: [AppComponent]

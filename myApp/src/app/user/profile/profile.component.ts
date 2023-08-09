@@ -35,7 +35,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.findOne();
-    this.findUserAutos();
   }
 
   editMode(): void {
@@ -44,7 +43,8 @@ export class ProfileComponent implements OnInit {
   
   findOne() {
     const id = this.userService.user?.localId;
-
+    this.autos = []
+    this.isLoading = true
     this.userService.getAllUsers().subscribe({
       next: (users) => {
         let ids: string[] = Object.keys(users);
@@ -60,12 +60,12 @@ export class ProfileComponent implements OnInit {
               city: this.userDetails.city,
               street: this.userDetails.street,
             });
+            this.findUserAutos()
           }
         }
         if (this.userDetails == undefined) {
           this.userFirstRegistration = true;
         }
-        this.isLoading = false;
       },
     });
   }
@@ -84,6 +84,7 @@ export class ProfileComponent implements OnInit {
             this.autos?.push(auto);
           }
         }
+        this.isLoading = false;
       },
     });
   }

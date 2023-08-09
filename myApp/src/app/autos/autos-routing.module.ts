@@ -5,6 +5,7 @@ import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { AuthActivate } from '../core/guards/auth-activate';
+import { isOwner } from '../core/guards/isOwner';
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
           {
             path: 'edit',
             component: EditComponent,
-            canActivate: [AuthActivate]
+            canActivate: [AuthActivate, isOwner],
           },
         ],
       },
@@ -36,6 +37,7 @@ const routes: Routes = [
       },
     ],
   },
+  
 ];
 
 @NgModule({

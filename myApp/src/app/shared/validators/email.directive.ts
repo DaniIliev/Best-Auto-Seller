@@ -13,7 +13,6 @@ import { appEmailValidator } from './app-email-validator';
       // all errors
       multi:true  
       // -----------
-      
     }
   ]
 })
@@ -24,7 +23,7 @@ export class EmailDirective implements Validator, OnChanges {
   @Input() appEmail: string[] = []
 
   // test
-  //  po defolt vryshta null function 
+  //  po defaultlt vryshta null
   validator: ValidatorFn = () => null
   constructor() { }
 

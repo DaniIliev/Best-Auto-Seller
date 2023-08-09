@@ -20,9 +20,9 @@ export class DetailsComponent implements OnInit {
   owner: boolean = false;
   username: string | undefined;
   likes: Like[] | undefined;
-  localId: string | undefined
+  localId: string | undefined;
   userAlreadyLiked: boolean = false;
-  isLoading:boolean = true
+  isLoading: boolean = true;
 
   form = this.fb.group({
     postText: ['', [Validators.required, Validators.minLength(5)]],
@@ -33,7 +33,7 @@ export class DetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private fb: FormBuilder,
-    private router: Router, 
+    private router: Router,
     private datePipe: DatePipe
   ) {}
 
@@ -45,13 +45,17 @@ export class DetailsComponent implements OnInit {
     this.fetchAuto();
     this.getAllComments();
     this.getLikes();
-    this.getUserDetails()
-    this.localId = this.userService.user?.localId
+    this.getUserDetails();
+    this.localId = this.userService.user?.localId;
   }
 
   fetchAuto(): void {
     const id = this.activatedRoute.snapshot.params['autoId'];
     this.apiService.getAuto(id).subscribe((auto) => {
+      if(auto == null){
+        this.router.navigate(['/404'])
+        return
+      }
       this.auto = auto;
       if (auto.userId == this.userService.user?.localId) {
         this.owner = true;
@@ -74,26 +78,30 @@ export class DetailsComponent implements OnInit {
   postComment() {
     const id = this.activatedRoute.snapshot.params['autoId'];
     const { postText } = this.form.value;
-    const createt_at =this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss')
+    const createt_at = this.datePipe.transform(
+      new Date(),
+      'MM/dd/yyyy h:mm:ss'
+    );
 
-
-    this.apiService.postComment(id, postText!, this.username!, createt_at!).subscribe({
-      next: () => {
-        this.form.reset();
-        this.getAllComments();
-        this.router.navigate([`/autos/${id}`]);
-      },
-      error: () => {
-        this.router.navigate([`/autos/${id}`]);
-      },
-    });
+    this.apiService
+      .postComment(id, postText!, this.username!, createt_at!)
+      .subscribe({
+        next: () => {
+          this.form.reset();
+          this.getAllComments();
+          this.router.navigate([`/autos/${id}`]);
+        },
+        error: () => {
+          this.router.navigate([`/autos/${id}`]);
+        },
+      });
   }
 
   postLike() {
     const id = this.activatedRoute.snapshot.params['autoId'];
 
     this.apiService.postLike(id, this.localId!).subscribe({
-      next: () => this.getLikes()
+      next: () => this.getLikes(),
     });
   }
   unLike() {
@@ -102,12 +110,11 @@ export class DetailsComponent implements OnInit {
       if (like.localId == this.localId) {
         const likeId = like.id;
         this.apiService.unLike(id, likeId).subscribe({
-          next: () =>{
-            this.getLikes()
-            this.userAlreadyLiked = false
-            this.router.navigate([`/autos/${id}`])
-
-          }
+          next: () => {
+            this.getLikes();
+            this.userAlreadyLiked = false;
+            // this.router.navigate([`/autos/${id}`])
+          },
         });
       }
     }
@@ -135,7 +142,7 @@ export class DetailsComponent implements OnInit {
 
   deleteFn() {
     const id = this.activatedRoute.snapshot.params['autoId'];
-    if(confirm('Are you sure?')){
+    if (confirm('Are you sure?')) {
       this.apiService.deleteAuto(id).subscribe({
         next: () => {
           this.router.navigate(['autos']);
@@ -152,15 +159,15 @@ export class DetailsComponent implements OnInit {
     this.router.navigate([`/autos/${id}/edit`]);
   }
 
-  getUserDetails(){
+  getUserDetails() {
     this.userService.getAllUsers().subscribe({
-        next: (users) => {
-          for (const user of Object.values(users)) {
-              if(user.localId == this.localId){
-               this.username = user.username
-              }
+      next: (users) => {
+        for (const user of Object.values(users)) {
+          if (user.localId == this.localId) {
+            this.username = user.username;
           }
         }
-    })
+      },
+    });
   }
 }

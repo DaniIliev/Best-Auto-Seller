@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { EmailDirective } from './validators/email.directive';
-import { LikeBtnComponent } from './like-btn/like-btn.component';
 import { ElapsedTimePipe } from './elapsed-time.pipe';
 
 @NgModule({
-  declarations: [LoaderComponent, EmailDirective, LikeBtnComponent, ElapsedTimePipe],
+  declarations: [LoaderComponent, EmailDirective, ElapsedTimePipe],
   imports: [CommonModule],
-  exports: [LoaderComponent, EmailDirective,LikeBtnComponent, ElapsedTimePipe],
+  exports: [LoaderComponent, EmailDirective, ElapsedTimePipe],
 })
 export class SharedModule {}

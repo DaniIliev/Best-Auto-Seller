@@ -12,8 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
-import { ERRORComponent } from './error/error.component';
 import { DatePipe } from '@angular/common';
+import { ErrorComponent } from './error/error.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { DatePipe } from '@angular/common';
     HomeComponent,
     SearchComponent,
     AuthenticatedComponent,
-    ERRORComponent,
+    ErrorComponent,
+    NotFoundComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,13 @@
 .create-form {
-  border: 1px solid #000;
-  margin-top: 3em;
-  margin-left: 6.2em;
+
+  margin-left: 6.6em;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 20em;
   padding: 1em;
+  height: 30em;
   border-radius: 2em;
   backdrop-filter: blur(18px);
   box-shadow: 0 1em 1em 1em rgba(255, 255, 255, 0.2);
@@ -61,7 +61,10 @@ p {
   font-size: 15px;
   font-style: italic;
   text-shadow: none;
+  margin: 0;
+  padding: 0;
 }
+
 .form {
   border: 1px solid #000;
   margin: 0 auto;

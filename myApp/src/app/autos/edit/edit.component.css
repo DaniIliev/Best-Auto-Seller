@@ -1,12 +1,12 @@
 .edit-form {
-    border: 1px solid #000;
-    margin-top: 3em;
+
     margin-left: 6.2em;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 20em;
+    height: 30em;
     padding: 1em;
     border-radius: 2em;
     backdrop-filter: blur(18px);
@@ -62,6 +62,8 @@
     font-size: 15px;
     font-style: italic;
     text-shadow: none;
+    margin: 0;
+    padding: 0;
   }
   .form {
     border: 1px solid #000;

@@ -36,7 +36,6 @@ export class ContactsComponent implements OnInit {
           if (user.localId == id) {
             this.userDetails = user;
             this.findUserAutos(user.localId)
-            this.isLoading = false
           }
         }
       },

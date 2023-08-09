@@ -24,7 +24,7 @@ export class NavigationComponent {
   }
 
   ngOnInit():void{
-  console.log(this.userService.user)
+
   }
 
   goToProfile(){

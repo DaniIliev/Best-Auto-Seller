@@ -5,6 +5,8 @@
   font-size: 15px;
   font-style: italic;
   text-shadow: none;
+  margin: 0;
+  padding: 0;
 }
 
 form{

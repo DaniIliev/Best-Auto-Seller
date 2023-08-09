@@ -9,6 +9,8 @@ export class ElapsedTimePipe implements PipeTransform {
   constructor(private datePipe: DatePipe){}
   transform(dateString: string, ...args: unknown[]): unknown {
     return moment(dateString).from(this.datePipe.transform((new Date), 'MM/dd/yyyy h:mm:ss'));
+    // return moment(dateString).fromNow();
+
   }
 
 }

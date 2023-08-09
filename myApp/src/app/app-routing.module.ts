@@ -4,7 +4,10 @@ import { HomeComponent } from './home/home.component';
 import { CreateAutoComponent } from './autos/create-auto/create-auto.component';
 import { SearchComponent } from './search/search.component';
 import { AuthActivate } from './core/guards/auth-activate';
-import { ERRORComponent } from './error/error.component';
+import { ErrorComponent } from './error/error.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+
 
 const routes: Routes = [
   {
@@ -27,14 +30,13 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: '404',
-    component: ERRORComponent
+    path: 'error',
+    component: ErrorComponent
   },
-  // {
-  //   path: 'autos',
-  //   loadChildren: () =>
-  //     import('./autos/autos.module').then((m) => m.AutosModule),
-  // },
+  {
+    path: '404',
+    component: NotFoundComponent
+  },
   {
     //leazy-loading
     path: 'user',

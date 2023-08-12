@@ -75,13 +75,15 @@
       
         <div *ngFor="let comment of comments" class="comment-content">
           <p>{{comment.created_at | elapsedTime}}</p>
-          <p>{{comment.name}}: {{comment.comment}}</p>
+          <p *ngIf="comment.name">{{comment.name}}: {{comment.comment}}</p>
+          <p *ngIf="comment.name == null">Anonymous: {{comment.comment}}</p>
         </div>
 
       </div>
       <div class="answer-comment" *ngIf="isLoggedIn">
         <h1>Whrite a comment!</h1>
-        <p><span>{{username}}</span> comment:</p>
+        <p *ngIf="username"><span>{{username}}</span> comment:</p>
+        <p *ngIf="username == undefined"><span>Anonymous</span> comment:</p>
         <div class="answer">
           <form  [formGroup]="form" (submit)="postComment()">
             <div class="content">

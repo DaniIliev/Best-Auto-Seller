@@ -65,6 +65,7 @@ export class ProfileComponent implements OnInit {
         }
         if (this.userDetails == undefined) {
           this.userFirstRegistration = true;
+          this.isLoading = false
         }
       },
     });

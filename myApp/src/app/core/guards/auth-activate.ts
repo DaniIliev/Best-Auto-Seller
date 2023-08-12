@@ -25,6 +25,17 @@ export class AuthActivate implements CanActivate {
       if(!this.userService.isLogged){
         this.router.navigate(['/user/login'])
       }
+        this.userService.getAllUsers().subscribe({
+          next: (users) => {
+            for (const user of Object.values(users)) {
+              if (user.localId == this.userService.user?.localId) {
+                return
+              }
+            }
+            this.router.navigate([`/user/profile/${this.userService.user?.localId}`])
+          },
+        });
+      
       
     return this.userService.isLogged;
   }

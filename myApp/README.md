@@ -41,17 +41,17 @@ creating likes and comments,\
 ## 📷 Screenshots
 <a name="screenshots"/>
 
-![SS1](/assets/screenshots/screenshots:scr1.png)
-![SS2](/assets/screenshots/screenshots:scr2.png)
-![SS3](/assets/screenshots/screenshots:scr3.png)
-![SS4](/assets/screenshots/screenshots:scr4.png)
-![SS5](/assets/screenshots/screenshots:scr5.png)
-![SS6](/assets/screenshots/screenshots:scr6.png)
-![SS7](/assets/screenshots/screenshots:scr7.png)
-![SS8](/assets/screenshots/screenshots:scr8.png)
-![SS9](/assets/screenshots/screenshots:scr9.png)
-![SS10](/assets/screenshots/screenshots:scr10.png)
-![SS11](/assets/screenshots/screenshots:scr11.png)
+![SS1](src/assets/screenshots/scr1.png)
+![SS2](src/assets/screenshots/scr2.png)
+![SS3](src/assets/screenshots/scr3.png)
+![SS4](src/assets/screenshots/scr4.png)
+![SS5](src/assets/screenshots/scr5.png)
+![SS6](src/assets/screenshots/scr6.png)
+![SS7](src/assets/screenshots/scr7.png)
+![SS8](src/assets/screenshots/scr8.png)
+![SS9](src/assets/screenshots/scr9.png)
+![SS10](src/assets/screenshots/scr10.png)
+![SS11](src/assets/screenshots/scr11.png)
 
 
 
